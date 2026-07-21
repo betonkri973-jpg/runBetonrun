@@ -210,7 +210,7 @@ playBtn.onclick = () => {
     collectibles.length = 0;
     particles.length = 0;
 
-    player.y = groundY;
+    player.y = groundY - player.height;
     player.velocityY = 0;
 
     music.play().catch(()=>{});
@@ -711,6 +711,7 @@ if(p.life<=0){
 }
 
 }
+
 
 /*==================================================
  SCRIPT.JS
