@@ -696,31 +696,32 @@ for(let i=particles.length-1;i>=0;i--){
 let p=particles[i];
 
 
-p.x+=p.speedX;
+p.x += p.speedX;
 
-p.y+=p.speedY;
+p.y += p.speedY;
 
-p.speedY+=0.2;
+p.speedY += 0.2;
 
 p.life--;
 
 
-if(p.life<=0){
+if(p.life <= 0){
 
-    particles.splice(i,1);
+particles.splice(i,1);
+
+}
+
 
 }
 
 }
 
-}
 
 
-/*==================================================
- SCRIPT.JS
- Bölüm 4
- Çizimler + Boss + Game Loop
-==================================================*/
+// ==================================================
+// BÖLÜM 4
+// Çizimler + Boss + Game Loop
+// ==================================================
 
 
 // ==================================================
