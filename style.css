@@ -1,0 +1,753 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+html,body{
+width:100%;
+height:100%;
+overflow:hidden;
+background:#000;
+color:#fff;
+touch-action:manipulation;
+}
+
+.hidden{
+display:none !important;
+}
+
+button{
+cursor:pointer;
+border:none;
+outline:none;
+transition:.25s;
+}
+
+button:active{
+transform:scale(.95);
+}
+
+/* Açılış */
+
+#intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+z-index:999;
+animation:introFade 3s forwards;
+}
+
+#introTitle{
+font-size:55px;
+color:#56b8ff;
+text-shadow:0 0 15px #56b8ff;
+animation:pulse 1.8s infinite;
+}
+
+/* Ana Menü */
+
+#menu{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(#071322,#0d2d47,#143d5f);
+}
+
+#gameTitle{
+font-size:70px;
+margin-bottom:60px;
+color:white;
+text-shadow:0 0 20px cyan;
+}
+
+#menu button{
+width:340px;
+padding:18px;
+margin:12px;
+border-radius:18px;
+font-size:26px;
+font-weight:bold;
+background:#2da8ff;
+color:white;
+box-shadow:0 0 20px #2da8ff;
+}
+
+#menu button:hover{
+background:#56b8ff;
+transform:scale(1.05);
+}
+
+/* Oyun Alanı */
+
+#game{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+overflow:hidden;
+background:linear-gradient(#5bc0ff,#8ddcff,#ffffff);
+}
+
+#gameCanvas{
+width:100%;
+height:100%;
+display:block;
+}
+
+/* HUD */
+
+#hud{
+position:absolute;
+top:15px;
+left:15px;
+right:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:26px;
+font-weight:bold;
+pointer-events:none;
+text-shadow:0 0 8px black;
+}
+
+#lifeBar{
+font-size:34px;
+}
+
+#score,
+#distance,
+#notes,
+#records{
+padding:10px 16px;
+background:rgba(0,0,0,.35);
+border-radius:14px;
+backdrop-filter:blur(6px);
+}
+
+/* Bildirim */
+
+#notification{
+position:fixed;
+top:120px;
+left:50%;
+transform:translateX(-50%);
+padding:20px 40px;
+background:#2da8ff;
+border-radius:18px;
+font-size:42px;
+font-weight:bold;
+box-shadow:0 0 25px cyan;
+z-index:300;
+animation:pop .5s;
+}
+
+/* Fever */
+
+#feverScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:80px;
+font-weight:bold;
+background:rgba(0,150,255,.18);
+color:#8fd8ff;
+text-shadow:0 0 30px cyan;
+pointer-events:none;
+}
+
+/* Legendary */
+
+#legendaryScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+font-size:75px;
+font-weight:bold;
+background:rgba(255,255,255,.12);
+color:#fff;
+text-shadow:0 0 30px gold;
+pointer-events:none;
+}
+
+/* Boss */
+
+#bossWarning{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:rgba(255,0,0,.45);
+font-size:65px;
+font-weight:bold;
+animation:flash .4s infinite;
+z-index:400;
+  }/* Başarımlar */
+
+#achievementMenu,
+#highScoreMenu,
+#helpMenu,
+#pauseMenu,
+#gameOver{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+background:rgba(0,0,0,.92);
+
+z-index:500;
+
+}
+
+#achievementMenu h2,
+#highScoreMenu h2,
+#helpMenu h2,
+#pauseMenu h1,
+#gameOver h1{
+
+font-size:58px;
+margin-bottom:30px;
+color:#56b8ff;
+text-shadow:0 0 20px cyan;
+
+}
+
+#achievementList{
+
+width:80%;
+max-width:700px;
+
+background:rgba(255,255,255,.08);
+
+padding:25px;
+
+border-radius:18px;
+
+overflow:auto;
+
+max-height:420px;
+
+}
+
+#achievementList p{
+
+font-size:28px;
+
+padding:12px;
+
+border-bottom:1px solid rgba(255,255,255,.12);
+
+}
+
+#helpMenu p{
+
+font-size:28px;
+
+margin:10px;
+
+}
+
+#bestScore{
+
+font-size:90px;
+
+margin:30px;
+
+color:gold;
+
+text-shadow:0 0 20px gold;
+
+}
+
+#finalScore{
+
+font-size:90px;
+
+margin:25px;
+
+color:#56b8ff;
+
+text-shadow:0 0 20px cyan;
+
+}
+
+#finalDistance{
+
+font-size:34px;
+
+margin-bottom:35px;
+
+}
+
+.backButton,
+#restartBtn,
+#menuBtn,
+#continueBtn,
+#pauseMenuBtn{
+
+width:320px;
+
+padding:18px;
+
+margin:12px;
+
+font-size:26px;
+
+font-weight:bold;
+
+border-radius:18px;
+
+background:#2da8ff;
+
+color:white;
+
+box-shadow:0 0 18px cyan;
+
+}
+
+.backButton:hover,
+#restartBtn:hover,
+#menuBtn:hover,
+#continueBtn:hover,
+#pauseMenuBtn:hover{
+
+transform:scale(1.05);
+
+background:#56b8ff;
+
+}
+
+/* Loading */
+
+#loading{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:black;
+
+font-size:40px;
+
+z-index:1000;
+
+}
+
+/* Scroll */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#56b8ff;
+
+border-radius:20px;
+
+}
+
+/* Telefon */
+
+@media(max-width:768px){
+
+#gameTitle{
+
+font-size:44px;
+
+}
+
+#menu button{
+
+width:85%;
+
+font-size:22px;
+
+}
+
+#hud{
+
+font-size:18px;
+
+}
+
+#lifeBar{
+
+font-size:28px;
+
+}
+
+#achievementMenu h2,
+#helpMenu h2,
+#highScoreMenu h2,
+#gameOver h1{
+
+font-size:38px;
+
+}
+
+#achievementList p{
+
+font-size:21px;
+
+}
+
+#notification{
+
+font-size:26px;
+
+padding:15px 20px;
+
+}
+
+#bossWarning{
+
+font-size:40px;
+
+}
+
+#legendaryScreen{
+
+font-size:42px;
+
+}
+
+#feverScreen{
+
+font-size:42px;
+
+}
+
+#bestScore,
+#finalScore{
+
+font-size:58px;
+
+}
+
+}/* ========================= */
+/* ANİMASYONLAR */
+/* ========================= */
+
+@keyframes introFade{
+
+0%{
+opacity:0;
+transform:scale(.7);
+}
+
+20%{
+opacity:1;
+transform:scale(1);
+}
+
+80%{
+opacity:1;
+transform:scale(1);
+}
+
+100%{
+opacity:0;
+visibility:hidden;
+transform:scale(1.15);
+}
+
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+@keyframes pop{
+
+0%{
+opacity:0;
+transform:translateX(-50%) scale(.5);
+}
+
+100%{
+opacity:1;
+transform:translateX(-50%) scale(1);
+}
+
+}
+
+@keyframes flash{
+
+0%{
+opacity:1;
+}
+
+50%{
+opacity:.45;
+}
+
+100%{
+opacity:1;
+}
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+@keyframes shake{
+
+0%{
+transform:translate(0);
+}
+
+20%{
+transform:translate(-6px,3px);
+}
+
+40%{
+transform:translate(6px,-3px);
+}
+
+60%{
+transform:translate(-5px,2px);
+}
+
+80%{
+transform:translate(5px,-2px);
+}
+
+100%{
+transform:translate(0);
+}
+
+}
+
+@keyframes rainbow{
+
+0%{
+filter:hue-rotate(0deg);
+}
+
+100%{
+filter:hue-rotate(360deg);
+}
+
+}
+
+@keyframes glow{
+
+0%{
+box-shadow:0 0 10px cyan;
+}
+
+50%{
+box-shadow:0 0 40px cyan;
+}
+
+100%{
+box-shadow:0 0 10px cyan;
+}
+
+}
+
+@keyframes bounce{
+
+0%{
+transform:translateY(0);
+}
+
+25%{
+transform:translateY(-8px);
+}
+
+50%{
+transform:translateY(0);
+}
+
+75%{
+transform:translateY(-4px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+}
+
+to{
+opacity:1;
+}
+
+}
+
+@keyframes fadeOut{
+
+from{
+opacity:1;
+}
+
+to{
+opacity:0;
+}
+
+}
+
+/* ========================= */
+/* ÖZEL EFEKTLER */
+/* ========================= */
+
+.fever{
+animation:glow .8s infinite;
+}
+
+.legendary{
+animation:rainbow 1s linear infinite;
+}
+
+.hit{
+animation:shake .25s;
+}
+
+.bounce{
+animation:bounce .5s;
+}
+
+.float{
+animation:float 2s ease-in-out infinite;
+}
+
+.fadeIn{
+animation:fadeIn .4s forwards;
+}
+
+.fadeOut{
+animation:fadeOut .4s forwards;
+}
+
+/* ========================= */
+/* CANVAS */
+/* ========================= */
+
+canvas{
+image-rendering:auto;
+touch-action:none;
+}
+
+/* ========================= */
+/* BUTONLAR */
+/* ========================= */
+
+button{
+user-select:none;
+}
+
+button:hover{
+filter:brightness(1.08);
+}
+
+button:disabled{
+opacity:.5;
+cursor:not-allowed;
+}
+
+/* ========================= */
+/* HUD PARLAMA */
+/* ========================= */
+
+#hud div{
+
+animation:glow 3s infinite;
+
+}
+
+/* ========================= */
+/* GAME OVER */
+/* ========================= */
+
+#gameOver{
+
+backdrop-filter:blur(8px);
+
+}
+
+/* ========================= */
+/* SON */
+/* ========================= */
