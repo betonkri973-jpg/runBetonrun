@@ -9,7 +9,6 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 function resizeCanvas() {
-
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     groundY = canvas.height - 180;
@@ -17,7 +16,6 @@ function resizeCanvas() {
     if(typeof player !== "undefined"){
         player.y = groundY - player.height;
     }
-
 }
 
 window.addEventListener("resize", resizeCanvas);
