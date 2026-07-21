@@ -704,7 +704,15 @@ p.life--;
 
 if(p.life<=0){
 
-particles.splice(i,1);/*==================================================
+    particles.splice(i,1);
+
+}
+
+}
+
+}
+/
+*==================================================
  SCRIPT.JS
  Bölüm 4
  Çizimler + Boss + Game Loop
