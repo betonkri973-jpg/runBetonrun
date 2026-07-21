@@ -9,13 +9,15 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 function resizeCanvas() {
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     groundY = canvas.height - 180;
 
-    if(player){
+    if(typeof player !== "undefined"){
         player.y = groundY - player.height;
     }
+
 }
 
 window.addEventListener("resize", resizeCanvas);
@@ -715,8 +717,6 @@ particles.splice(i,1);
 }
 
 }
-
-
 
 // ==================================================
 // BÖLÜM 4
