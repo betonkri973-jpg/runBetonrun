@@ -1,13 +1,41 @@
 /*==================================================
  KOŞ BETON KOŞ
  Script.js
- Bölüm 1
 ==================================================*/
 
-// Canvas
 
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
+let canvas;
+let ctx;
+
+
+window.addEventListener("DOMContentLoaded",()=>{
+
+
+canvas = document.getElementById("gameCanvas");
+
+if(canvas){
+
+ctx = canvas.getContext("2d");
+
+}
+
+
+const loading = document.getElementById("loading");
+
+
+setTimeout(()=>{
+
+if(loading){
+
+loading.classList.add("hidden");
+
+}
+
+},1500);
+
+
+
+});
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
