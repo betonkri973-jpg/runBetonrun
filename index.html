@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Koş Beton Koş</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- Açılış -->
+
+<div id="intro">
+
+<h1 id="introTitle">
+Beton Archive Sunar
+</h1>
+
+</div>
+
+<!-- Ana Menü -->
+
+<div id="menu" class="hidden">
+
+<h1 id="gameTitle">
+
+🏃 Koş Beton Koş
+
+</h1>
+
+<button id="playBtn">
+
+▶️ Oyuna Başla
+
+</button>
+
+<button id="achievementBtn">
+
+🏆 Başarımlar
+
+</button>
+
+<button id="scoreBtn">
+
+🥇 En Yüksek Skor
+
+</button>
+
+<button id="helpBtn">
+
+ℹ️ Nasıl Oynanır
+
+</button>
+
+</div>
+
+<!-- Başarımlar -->
+
+<div id="achievementMenu" class="hidden">
+
+<h2>
+
+🏆 Başarımlar
+
+</h2>
+
+<div id="achievementList">
+
+<p>🥉 İlk Adım</p>
+
+<p>🎵 100 Nota Topla</p>
+
+<p>📀 10 Plak Topla</p>
+
+<p>🏃 5000 Metre Koş</p>
+
+<p>🔥 Fever Ustası</p>
+
+<p>👹 Boss Kaçışını Tamamla</p>
+
+<p>💎 Legendary Crystal Bul</p>
+
+</div>
+
+<button class="backButton">
+
+⬅️ Geri
+
+</button>
+
+</div>
+
+<!-- Rekor -->
+
+<div id="highScoreMenu" class="hidden">
+
+<h2>
+
+🥇 En Yüksek Skor
+
+</h2>
+
+<h1 id="bestScore">
+
+0
+
+</h1>
+
+<button class="backButton">
+
+⬅️ Geri
+
+</button>
+
+</div>
+
+<!-- Nasıl Oynanır -->
+
+<div id="helpMenu" class="hidden">
+
+<h2>
+
+ℹ️ Nasıl Oynanır
+
+</h2>
+
+<p>
+
+👆 Dokun = Zıpla
+
+</p>
+
+<p>
+
+👆👆 Çift Dokun = Yüksek Zıpla
+
+</p>
+
+<p>
+
+🎵 = 10 Puan
+
+</p>
+
+<p>
+
+📀 = 100 Puan
+
+</p>
+
+<p>
+
+🍌 = Süper Zıplama
+
+</p>
+
+<p>
+
+💙 = 3 Canın Var
+
+</p>
+
+<p>
+
+5000 Metrede Boss Kaçışı Başlar
+
+</p>
+
+<p>
+
+💎 Çok Nadir Çıkar
+
+</p>
+
+<button class="backButton">
+
+⬅️ Geri
+
+</button>
+
+</div>
+
+<!-- Oyun -->
+
+<div id="game" class="hidden">
+
+<canvas id="gameCanvas"></canvas>
+
+<div id="hud">
+
+<div id="lifeBar">
+
+💙💙💙
+
+</div>
+
+<div id="score">
+
+Archive Puanı
+
+0
+
+</div>
+
+<div id="distance">
+
+0 m
+
+</div>
+
+<div id="notes">
+
+🎵 0
+
+</div>
+
+<div id="records">
+
+📀 0
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Game Over -->
+
+<div id="gameOver" class="hidden">
+
+<h1>
+
+💀 GAME OVER
+
+</h1>
+
+<h2>
+
+Archive Puanı
+
+</h2>
+
+<h1 id="finalScore">
+
+0
+
+</h1>
+
+<h3 id="finalDistance">
+
+0 Metre
+
+</h3>
+
+<button id="restartBtn">
+
+🔄 Tekrar Oyna
+
+</button>
+
+<button id="menuBtn">
+
+🏠 Ana Menü
+
+</button>
+
+  </div><!-- Bildirimler -->
+
+<div id="notification" class="hidden">
+
+<h1 id="notificationText">
+
+READY
+
+</h1>
+
+</div>
+
+<!-- Boss Uyarısı -->
+
+<div id="bossWarning" class="hidden">
+
+<h1>
+
+⚠️ BOSS KAÇIŞI!
+
+</h1>
+
+<p>
+
+KAÇ!
+
+</p>
+
+</div>
+
+<!-- Fever Mode -->
+
+<div id="feverScreen" class="hidden">
+
+<h1>
+
+🔥 FEVER MODE
+
+</h1>
+
+</div>
+
+<!-- Rainbow Fever -->
+
+<div id="legendaryScreen" class="hidden">
+
+<h1>
+
+🌈 LEGENDARY!
+
+</h1>
+
+<p>
+
+3X PUAN
+
+</p>
+
+</div>
+
+<!-- Duraklat -->
+
+<div id="pauseMenu" class="hidden">
+
+<h1>
+
+⏸️ Duraklatıldı
+
+</h1>
+
+<button id="continueBtn">
+
+▶️ Devam Et
+
+</button>
+
+<button id="pauseMenuBtn">
+
+🏠 Ana Menü
+
+</button>
+
+</div>
+
+<!-- Arka Plan Müziği -->
+
+<audio id="bgMusic" loop>
+
+<source src="gittim.m4a" type="audio/mp4">
+
+</audio>
+
+<!-- Karakter Resmi -->
+
+<img
+id="playerImage"
+src="karakter.png"
+alt="Karakter"
+style="display:none;"
+>
+
+<!-- Yükleniyor -->
+
+<div id="loading">
+
+<p>
+
+Yükleniyor...
+
+</p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+  </html>
