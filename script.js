@@ -20,6 +20,25 @@ window.addEventListener("resize", resizeCanvas);
 let groundY = 0;
 resizeCanvas();
 
+
+// ==============================
+// Yükleme Ekranı
+// ==============================
+
+const loading = document.getElementById("loading");
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        if(loading){
+            loading.classList.add("hidden");
+        }
+
+    },1000);
+
+});
+
 // ==============================
 // Sayfalar
 // ==============================
