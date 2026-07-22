@@ -1349,23 +1349,14 @@ player.height
 
 else{
 
-
-ctx.fillStyle="white";
-
+ctx.fillStyle="red";
 
 ctx.fillRect(
-
 player.x,
-
 player.y,
-
 player.width,
-
 player.height
-
 );
-
-
 
 }
 
