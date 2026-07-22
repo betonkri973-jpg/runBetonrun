@@ -1,710 +1,400 @@
 /*==================================================
-KOŞ BETON KOŞ
-STYLE.CSS
-Bölüm 1
+ KOŞ BETON KOŞ
+ STYLE.CSS
 ==================================================*/
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
-font-family:Arial,Helvetica,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-html,
-body{
-
-width:100%;
-height:100%;
-overflow:hidden;
-
-background:#000;
-
-color:#fff;
-
-touch-action:manipulation;
-
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    color:#fff;
+    touch-action:manipulation;
 }
 
 .hidden{
-
-display:none !important;
-
+    display:none !important;
 }
 
 /*=========================
-LOADING
-=========================*/
-
-#loading{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-
-background:#000;
-
-z-index:9999;
-
-}
-
-#loading h1{
-
-font-size:48px;
-
-color:#56b8ff;
-
-text-shadow:0 0 20px cyan;
-
-animation:pulse 1.5s infinite;
-
-}
-
-/*=========================
-INTRO
-=========================*/
-
-#intro{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-
-background:#000;
-
-z-index:9000;
-
-animation:introFade 3s forwards;
-
-}
-
-#introTitle{
-
-font-size:64px;
-
-color:#56b8ff;
-
-text-shadow:0 0 20px cyan;
-
-}
-
-/*=========================
-MENÜ
-=========================*/
-
-#menu{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-align-items:center;
-
-background:linear-gradient(
-180deg,
-#071322,
-#10314d,
-#205b86
-);
-
-}
-
-#gameTitle{
-
-font-size:72px;
-
-margin-bottom:60px;
-
-text-shadow:0 0 20px cyan;
-
-}
-
-#menu button{
-
-width:340px;
-
-padding:20px;
-
-margin:14px;
-
-border:none;
-
-border-radius:18px;
-
-background:#2da8ff;
-
-color:white;
-
-font-size:28px;
-
-font-weight:bold;
-
-box-shadow:0 0 18px cyan;
-
-transition:.25s;
-
-}
-
-#menu button:active{
-
-transform:scale(.96);
-
-}
-
-/*=========================
-OYUN
-=========================*/
-
-#game{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-overflow:hidden;
-
-background:linear-gradient(
-
-#68c8ff,
-#9ee2ff,
-#ffffff
-
-);
-
-}
-
-#gameCanvas{
-
-position:absolute;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-display:block;
-
-}
-
-/*=========================
-HUD
-=========================*/
-
-#hud{
-
-position:absolute;
-
-top:20px;
-left:20px;
-right:20px;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-pointer-events:none;
-
-font-size:24px;
-
-font-weight:bold;
-
-}
-
-#hud div{
-
-padding:10px 18px;
-
-background:rgba(0,0,0,.35);
-
-backdrop-filter:blur(8px);
-
-border-radius:16px;
-
-box-shadow:0 0 15px rgba(0,255,255,.3);
-
-}
-
-#lifeBar{
-
-font-size:32px;
-
-}
-
-/*=========================
-BUTON
+ GENEL BUTONLAR
 =========================*/
 
 button{
-
-cursor:pointer;
-
-user-select:none;
-
-outline:none;
-
-border:none;
-
+    border:none;
+    outline:none;
+    cursor:pointer;
+    transition:.25s;
+    border-radius:18px;
+    font-size:24px;
+    font-weight:bold;
 }
 
-button:hover{
+button:active{
+    transform:scale(.95);
+}
 
-filter:brightness(1.08);
+/*=========================
+ LOADING
+=========================*/
 
-}/*=========================
-MENÜLER
+#loading{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+    z-index:9999;
+}
+
+#loading h1{
+    color:#56b8ff;
+    font-size:48px;
+    text-shadow:0 0 20px cyan;
+    animation:pulse 1.5s infinite;
+}
+
+/*=========================
+ INTRO
+=========================*/
+
+#intro{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+    z-index:9000;
+    animation:introFade 3s forwards;
+}
+
+#introTitle{
+    font-size:58px;
+    color:#56b8ff;
+    text-shadow:0 0 20px cyan;
+}
+
+/*=========================
+ ANA MENÜ
+=========================*/
+
+#menu{
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(#0b1d30,#15496b,#2780b6);
+}
+
+#gameTitle{
+    font-size:68px;
+    margin-bottom:60px;
+    text-shadow:0 0 25px cyan;
+}
+
+#menu button{
+    width:340px;
+    padding:18px;
+    margin:12px;
+    background:#2da8ff;
+    color:white;
+    box-shadow:0 0 18px cyan;
+}
+
+#menu button:hover{
+    background:#57bcff;
+    transform:scale(1.04);
+}
+
+/*=========================
+ OYUN
+=========================*/
+
+#game{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    background:linear-gradient(#69c9ff,#a9e7ff,#ffffff);
+}
+
+#gameCanvas{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+/*=========================
+ HUD
+=========================*/
+
+#hud{
+    position:absolute;
+    top:15px;
+    left:15px;
+    right:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+    pointer-events:none;
+}
+
+#hud div{
+    padding:10px 15px;
+    background:rgba(0,0,0,.35);
+    border-radius:14px;
+    backdrop-filter:blur(6px);
+}
+
+#lifeBar{
+    font-size:30px;
+}
+
+/*=========================
+ MENÜLER
 =========================*/
 
 #achievementMenu,
 #highScoreMenu,
 #helpMenu,
-#pauseMenu,
 #gameOver{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-align-items:center;
-
-background:rgba(0,0,0,.92);
-
-z-index:500;
-
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.92);
+    z-index:500;
 }
 
 #achievementMenu h2,
 #highScoreMenu h2,
 #helpMenu h2,
-#pauseMenu h1,
 #gameOver h1{
-
-font-size:56px;
-
-margin-bottom:25px;
-
-color:#56b8ff;
-
-text-shadow:0 0 20px cyan;
-
+    font-size:52px;
+    margin-bottom:25px;
+    color:#56b8ff;
+    text-shadow:0 0 20px cyan;
 }
 
 #achievementList{
-
-width:80%;
-
-max-width:700px;
-
-max-height:420px;
-
-overflow:auto;
-
-padding:20px;
-
-background:rgba(255,255,255,.08);
-
-border-radius:18px;
-
+    width:80%;
+    max-width:700px;
+    max-height:420px;
+    overflow:auto;
+    padding:20px;
+    background:rgba(255,255,255,.08);
+    border-radius:18px;
 }
 
 #achievementList p{
-
-padding:14px;
-
-font-size:26px;
-
-border-bottom:1px solid rgba(255,255,255,.12);
-
+    padding:12px;
+    font-size:24px;
+    border-bottom:1px solid rgba(255,255,255,.15);
 }
 
 #helpMenu p{
-
-font-size:26px;
-
-margin:10px;
-
-}
-
-#bestScore{
-
-font-size:90px;
-
-color:gold;
-
-text-shadow:0 0 20px gold;
-
-margin:25px;
-
-}
-
-#finalScore{
-
-font-size:90px;
-
-margin:20px;
-
-color:#56b8ff;
-
-text-shadow:0 0 20px cyan;
-
-}
-
-#finalDistance{
-
-font-size:34px;
-
-margin-bottom:30px;
-
+    font-size:24px;
+    margin:10px;
 }
 
 .backButton,
 #restartBtn,
-#menuBtn,
-#continueBtn,
-#pauseMenuBtn{
-
-width:320px;
-
-padding:18px;
-
-margin:12px;
-
-font-size:26px;
-
-font-weight:bold;
-
-background:#2da8ff;
-
-color:white;
-
-border-radius:18px;
-
-box-shadow:0 0 18px cyan;
-
-}
-
-/*=========================
-BİLDİRİM
+#menuBtn{
+    width:300px;
+    padding:18px;
+    margin:12px;
+    background:#2da8ff;
+    color:white;
+    box-shadow:0 0 18px cyan;/*=========================
+ BİLDİRİM
 =========================*/
 
 #notification{
+    position:fixed;
+    top:100px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:18px 35px;
+    background:#2da8ff;
+    color:white;
+    border-radius:18px;
+    font-size:38px;
+    font-weight:bold;
+    box-shadow:0 0 20px cyan;
+    z-index:1000;
+}
 
-position:fixed;
-
-top:100px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-padding:20px 45px;
-
-background:#2da8ff;
-
-border-radius:18px;
-
-font-size:42px;
-
-font-weight:bold;
-
-box-shadow:0 0 25px cyan;
-
-z-index:1000;
-
+#notificationText{
+    margin:0;
 }
 
 /*=========================
-BOSS
+ EN YÜKSEK SKOR
 =========================*/
 
-#bossWarning{
+#bestScore{
+    font-size:80px;
+    color:gold;
+    margin:25px;
+    text-shadow:0 0 20px gold;
+}
 
-position:fixed;
+#finalScore{
+    font-size:80px;
+    color:#56b8ff;
+    margin:20px;
+    text-shadow:0 0 20px cyan;
+}
 
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-align-items:center;
-
-background:rgba(255,0,0,.35);
-
-font-size:60px;
-
-font-weight:bold;
-
-animation:flash .4s infinite;
-
+#finalDistance{
+    font-size:30px;
+    margin-bottom:30px;
 }
 
 /*=========================
-FEVER
+ SCROLLBAR
 =========================*/
 
-#feverScreen{
+::-webkit-scrollbar{
+    width:8px;
+}
 
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-
-font-size:70px;
-
-font-weight:bold;
-
-background:rgba(0,180,255,.15);
-
-color:#7ddcff;
-
-text-shadow:0 0 25px cyan;
-
-pointer-events:none;
-
+::-webkit-scrollbar-thumb{
+    background:#56b8ff;
+    border-radius:20px;
 }
 
 /*=========================
-LEGENDARY
+ MOBİL
 =========================*/
 
-#legendaryScreen{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-align-items:center;
-
-font-size:70px;
-
-font-weight:bold;
-
-background:rgba(255,255,255,.10);
-
-text-shadow:0 0 25px gold;
-
-pointer-events:none;
-
-}
-
-/*=========================
-MOBİL
-=========================*/
-
-@media(max-width:768px){
+@media (max-width:768px){
 
 #gameTitle{
-
-font-size:42px;
-
+    font-size:42px;
+    text-align:center;
 }
 
 #menu button{
-
-width:90%;
-
-font-size:22px;
-
+    width:85%;
+    font-size:20px;
 }
 
 #hud{
+    font-size:16px;
+    gap:6px;
+    flex-wrap:wrap;
+}
 
-font-size:17px;
-
+#hud div{
+    padding:8px 10px;
 }
 
 #lifeBar{
-
-font-size:24px;
-
+    font-size:24px;
 }
 
 #achievementMenu h2,
 #highScoreMenu h2,
 #helpMenu h2,
-#pauseMenu h1,
 #gameOver h1{
-
-font-size:36px;
-
+    font-size:34px;
 }
 
 #achievementList p{
+    font-size:18px;
+}
 
-font-size:20px;
-
+#helpMenu p{
+    font-size:18px;
 }
 
 #notification{
-
-font-size:24px;
-
-padding:15px 25px;
-
-}
-
-#bossWarning{
-
-font-size:36px;
-
-}
-
-#feverScreen,
-#legendaryScreen{
-
-font-size:42px;
-
+    font-size:24px;
+    padding:12px 20px;
 }
 
 #bestScore,
 #finalScore{
+    font-size:50px;
+}
 
-font-size:60px;
-
+.backButton,
+#restartBtn,
+#menuBtn{
+    width:85%;
 }
 
 }
 
 /*=========================
-ANİMASYONLAR
+ ANİMASYONLAR
 =========================*/
 
 @keyframes pulse{
 
-0%{transform:scale(1);}
-50%{transform:scale(1.08);}
-100%{transform:scale(1);}
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
+100%{
+transform:scale(1);
+}
 
 }
 
 @keyframes introFade{
 
-0%{opacity:0;}
+0%{
+opacity:0;
+}
 
-20%{opacity:1;}
+20%{
+opacity:1;
+}
 
-80%{opacity:1;}
+80%{
+opacity:1;
+}
 
 100%{
-
 opacity:0;
-
 visibility:hidden;
-
 }
-
-}
-
-@keyframes flash{
-
-0%{opacity:1;}
-
-50%{opacity:.35;}
-
-100%{opacity:1;}
 
 }
 
 @keyframes glow{
 
 0%{
-
 box-shadow:0 0 10px cyan;
-
 }
 
 50%{
-
 box-shadow:0 0 35px cyan;
-
 }
 
 100%{
-
 box-shadow:0 0 10px cyan;
-
-}
-
-}
-
-@keyframes rainbow{
-
-0%{
-
-filter:hue-rotate(0deg);
-
-}
-
-100%{
-
-filter:hue-rotate(360deg);
-
 }
 
 }
@@ -719,24 +409,64 @@ filter:hue-rotate(360deg);
 
 }
 
-/*=========================
-EFEKTLER
-=========================*/
+@keyframes float{
 
-.fever{
+0%{
+transform:translateY(0);
+}
 
-animation:glow .8s infinite;
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0);
+}
 
 }
 
-.legendary{
+@keyframes fadeIn{
 
-animation:rainbow 1s linear infinite;
+from{
+opacity:0;
+}
 
+to{
+opacity:1;
+}
+
+}
+
+/*=========================
+ EFEKTLER
+=========================*/
+
+.glow{
+animation:glow 1.2s infinite;
 }
 
 .hit{
-
 animation:shake .25s;
-
 }
+
+.float{
+animation:float 2s ease-in-out infinite;
+}
+
+.fadeIn{
+animation:fadeIn .5s forwards;
+}
+
+/*=========================
+ CANVAS
+=========================*/
+
+canvas{
+    image-rendering:auto;
+    touch-action:none;
+}
+
+/*=========================
+ SON
+=========================*/
+  }
