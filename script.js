@@ -106,26 +106,45 @@ window.addEventListener("DOMContentLoaded",()=>{
 
 function resizeCanvas(){
 
-
-    if(!canvas) return;
-
-
-    canvas.width = window.innerWidth;
-
-    canvas.height = window.innerHeight;
+if(!canvas) return;
 
 
-    groundY = canvas.height - 180;
+const dpr = window.devicePixelRatio || 1;
+
+
+canvas.width = window.innerWidth * dpr;
+
+canvas.height = window.innerHeight * dpr;
+
+
+canvas.style.width =
+window.innerWidth+"px";
+
+
+canvas.style.height =
+window.innerHeight+"px";
+
+
+ctx.setTransform(
+dpr,
+0,
+0,
+dpr,
+0,
+0
+);
+
+
+groundY = window.innerHeight - 180;
 
 
 
-    if(typeof player !== "undefined"){
+if(typeof player !== "undefined"){
 
+player.y =
+groundY - player.height;
 
-        player.y = groundY - player.height;
-
-
-    }
+}
 
 
 }
