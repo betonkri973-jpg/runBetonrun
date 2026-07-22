@@ -1,1082 +1,2205 @@
 /*==================================================
- KOŞ BETON KOŞ
+ KOŞ BETON KOŞ v2
  SCRIPT.JS
- Bölüm 1
+ BÖLÜM 1
 ==================================================*/
+
 
 //=========================
 // CANVAS
 //=========================
 
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
+const canvas =
+document.getElementById("gameCanvas");
+
+const ctx =
+canvas.getContext("2d");
+
 
 function resizeCanvas(){
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width =
+    window.innerWidth;
 
-    groundY = canvas.height - 170;
+    canvas.height =
+    window.innerHeight;
+
+    groundY =
+    canvas.height - 150;
 
 }
 
-window.addEventListener("resize",resizeCanvas);
+
+window.addEventListener(
+"resize",
+resizeCanvas
+);
+
+
 
 //=========================
-// SAYFALAR
+// EKRANLAR
 //=========================
 
-const loading = document.getElementById("loading");
-const intro = document.getElementById("intro");
+const loading =
+document.getElementById("loading");
 
-const menu = document.getElementById("menu");
-const game = document.getElementById("game");
-const gameOver = document.getElementById("gameOver");
 
-const achievementMenu =
-document.getElementById("achievementMenu");
+const intro =
+document.getElementById("intro");
 
-const highScoreMenu =
-document.getElementById("highScoreMenu");
 
-const helpMenu =
-document.getElementById("helpMenu");
+const menu =
+document.getElementById("menu");
+
+
+const game =
+document.getElementById("game");
+
+
+const gameOver =
+document.getElementById("gameOver");
+
+
 
 //=========================
 // BUTONLAR
 //=========================
 
+
 const playBtn =
 document.getElementById("playBtn");
+
 
 const restartBtn =
 document.getElementById("restartBtn");
 
+
 const menuBtn =
 document.getElementById("menuBtn");
+
+
 
 const achievementBtn =
 document.getElementById("achievementBtn");
 
+
 const scoreBtn =
 document.getElementById("scoreBtn");
+
 
 const helpBtn =
 document.getElementById("helpBtn");
 
+
+
 const backButtons =
 document.querySelectorAll(".backButton");
+
+
 
 //=========================
 // HUD
 //=========================
 
+
 const scoreValue =
 document.getElementById("scoreValue");
+
 
 const distanceValue =
 document.getElementById("distanceValue");
 
+
 const noteValue =
 document.getElementById("noteValue");
+
 
 const recordValue =
 document.getElementById("recordValue");
 
+
 const lifeBar =
 document.getElementById("lifeBar");
 
-//=========================
-// SES
-//=========================
 
-const bgMusic =
-document.getElementById("bgMusic");
 
 //=========================
-// KARAKTER RESMİ
+// OYUN DEĞİŞKENLERİ
 //=========================
 
-const playerImage =
-document.getElementById("playerImage");
 
-//=========================
-// OYUN
-//=========================
+let running=false;
 
-let running = false;
 
-let score = 0;
-let distance = 0;
+let score=0;
 
-let notes = 0;
-let records = 0;
 
-let lives = 3;
+let distance=0;
 
-let gravity = 0.9;
 
-let gameSpeed = 8;
+let notes=0;
 
-let groundY = 0;
+
+let records=0;
+
+
+let lives=3;
+
+
+let gameSpeed=8;
+
+
+let gravity=0.8;
+
+
+let groundY=0;
+
+
 
 //=========================
 // OYUNCU
 //=========================
 
-const player = {
 
-    x:150,
+const player={
 
-    y:0,
 
-    width:110,
+x:150,
 
-    height:110,
 
-    velocityY:0,
+y:0,
 
-    jumpPower:-18,
 
-    doubleJumpPower:-25,
+width:90,
 
-    jumping:false,
 
-    doubleJump:false,
+height:120,
 
-    invincible:false,
 
-    superJump:false
+velocityY:0,
+
+
+jumpPower:-17,
+
+
+doubleJumpPower:-25,
+
+
+jumping:false,
+
+
+doubleJump:false,
+
+
+runFrame:0,
+
+
+invincible:false
 
 };
 
+
+
+
+
 function resetPlayer(){
 
-    player.x = 150;
 
-    player.y = groundY-player.height;
+player.y =
+groundY-player.height;
 
-    player.velocityY = 0;
 
-    player.jumping = false;
+player.velocityY=0;
 
-    player.doubleJump = false;
+
+player.jumping=false;
+
+
+player.doubleJump=false;
+
 
 }
+
+
+
+
+
 
 //=========================
 // DİZİLER
 //=========================
 
-const obstacles = [];
 
-const items = [];
+const obstacles=[];
 
-const particles = [];
+
+const items=[];
+
+
+const particles=[];
+
+
 
 //=========================
 // BAŞLANGIÇ
 //=========================
 
-window.addEventListener("load",()=>{
 
-    resizeCanvas();
+resizeCanvas();
 
-    resetPlayer();
 
-});/*==================================================
- KOŞ BETON KOŞ
- SCRIPT.JS
- Bölüm 2
-==================================================*/
+resetPlayer();
 
-//=========================
-// MENÜLER
-//=========================
+
+
+// Yükleme
 
 setTimeout(()=>{
 
-    loading.classList.add("hidden");
 
-},1000);
+loading.classList.add("hidden");
+
+
+},1500);
+
+
+
+// Intro
 
 setTimeout(()=>{
 
-    intro.classList.add("hidden");
 
-    menu.classList.remove("hidden");
+intro.classList.add("hidden");
+
+
+menu.classList.remove("hidden");
+
 
 },3000);
 
+
+
 //=========================
-// BAŞLAT
+// MENÜ
 //=========================
 
-playBtn.onclick = ()=>{
 
-    menu.classList.add("hidden");
+playBtn.onclick=()=>{
 
-    game.classList.remove("hidden");
 
-    running = true;
+menu.classList.add("hidden");
 
-    score = 0;
-    distance = 0;
-    notes = 0;
-    records = 0;
-    lives = 3;
 
-    obstacles.length = 0;
-    items.length = 0;
-    particles.length = 0;
+game.classList.remove("hidden");
 
-    resetPlayer();
 
-    bgMusic.currentTime = 0;
+running=true;
 
-    bgMusic.play().catch(()=>{});
 
-    gameLoop();
+score=0;
+
+distance=0;
+
+notes=0;
+
+records=0;
+
+lives=3;
+
+
+obstacles.length=0;
+
+items.length=0;
+
+particles.length=0;
+
+
+resetPlayer();
+
+
+gameLoop();
+
 
 };
 
-//=========================
-// YENİDEN BAŞLAT
-//=========================
 
-restartBtn.onclick = ()=>{
 
-    gameOver.classList.add("hidden");
 
-    playBtn.click();
+restartBtn.onclick=()=>{
 
-};
 
-//=========================
-// MENÜYE DÖN
-//=========================
+gameOver.classList.add("hidden");
 
-menuBtn.onclick = ()=>{
 
-    running = false;
+playBtn.click();
 
-    bgMusic.pause();
-
-    gameOver.classList.add("hidden");
-
-    game.classList.add("hidden");
-
-    menu.classList.remove("hidden");
 
 };
 
-//=========================
-// ALT MENÜLER
-//=========================
+
+
+
+menuBtn.onclick=()=>{
+
+
+running=false;
+
+
+gameOver.classList.add("hidden");
+
+
+game.classList.add("hidden");
+
+
+menu.classList.remove("hidden");
+
+
+};
+
+
+
+// Alt menüler
 
 achievementBtn.onclick=()=>{
 
-    menu.classList.add("hidden");
+menu.classList.add("hidden");
 
-    achievementMenu.classList.remove("hidden");
+document.getElementById("achievementMenu")
+.classList.remove("hidden");
 
 };
+
 
 scoreBtn.onclick=()=>{
 
-    menu.classList.add("hidden");
+menu.classList.add("hidden");
 
-    highScoreMenu.classList.remove("hidden");
+document.getElementById("highScoreMenu")
+.classList.remove("hidden");
 
 };
+
 
 helpBtn.onclick=()=>{
 
-    menu.classList.add("hidden");
+menu.classList.add("hidden");
 
-    helpMenu.classList.remove("hidden");
+document.getElementById("helpMenu")
+.classList.remove("hidden");
 
 };
 
+
+
 backButtons.forEach(btn=>{
 
-    btn.onclick=()=>{
+btn.onclick=()=>{
 
-        achievementMenu.classList.add("hidden");
+document.querySelectorAll(".screen")
+.forEach(e=>e.classList.add("hidden"));
 
-        highScoreMenu.classList.add("hidden");
+menu.classList.remove("hidden");
 
-        helpMenu.classList.add("hidden");
+};
 
-        menu.classList.remove("hidden");
+});/*==================================================
+ KOŞ BETON KOŞ v2
+ SCRIPT.JS
+ BÖLÜM 2
+==================================================*/
 
-    };
 
-});
+//=========================
+// KARAKTER ÇİZİMİ
+//=========================
+
+
+function drawPlayer(){
+
+
+let x = player.x;
+let y = player.y;
+
+
+// Koşma animasyonu
+
+let run =
+Math.sin(player.runFrame)*5;
+
+
+
+// Bacaklar
+
+ctx.strokeStyle="#111";
+
+ctx.lineWidth=8;
+
+
+ctx.beginPath();
+
+ctx.moveTo(
+x+35,
+y+85
+);
+
+ctx.lineTo(
+x+25,
+y+115+run
+);
+
+
+ctx.moveTo(
+x+60,
+y+85
+);
+
+ctx.lineTo(
+x+75,
+y+115-run
+);
+
+ctx.stroke();
+
+
+
+// Ayakkabı
+
+ctx.fillStyle="#ffffff";
+
+
+ctx.fillRect(
+x+10,
+y+110+run,
+25,
+10
+);
+
+
+ctx.fillRect(
+x+70,
+y+110-run,
+25,
+10
+);
+
+
+
+// Siyah pantolon
+
+
+ctx.fillStyle="#111";
+
+
+ctx.fillRect(
+x+25,
+y+70,
+45,
+35
+);
+
+
+
+// Mavi kapüşonlu
+
+
+ctx.fillStyle="#167dff";
+
+
+ctx.beginPath();
+
+
+ctx.roundRect(
+x+15,
+y+35,
+65,
+50,
+12
+);
+
+
+ctx.fill();
+
+
+
+// Kollar
+
+
+ctx.strokeStyle="#167dff";
+
+ctx.lineWidth=10;
+
+
+ctx.beginPath();
+
+
+ctx.moveTo(
+x+20,
+y+45
+);
+
+
+ctx.lineTo(
+x,
+y+70+run
+);
+
+
+
+ctx.moveTo(
+x+75,
+y+45
+);
+
+
+ctx.lineTo(
+x+95,
+y+65-run
+);
+
+
+ctx.stroke();
+
+
+
+// Boyun
+
+
+ctx.fillStyle="#f1c27d";
+
+
+ctx.fillRect(
+x+42,
+y+25,
+15,
+15
+);
+
+
+
+// Yüz
+
+
+ctx.beginPath();
+
+
+ctx.arc(
+x+50,
+y+15,
+22,
+0,
+Math.PI*2
+);
+
+
+ctx.fillStyle="#f1c27d";
+
+
+ctx.fill();
+
+
+
+// Mavi saç
+
+
+ctx.beginPath();
+
+
+ctx.arc(
+x+50,
+y+5,
+23,
+Math.PI,
+Math.PI*2
+);
+
+
+ctx.fillStyle="#0099ff";
+
+
+ctx.fill();
+
+
+
+// Saç uçları
+
+
+ctx.fillRect(
+x+25,
+y+5,
+10,
+15
+);
+
+
+ctx.fillRect(
+x+65,
+y+3,
+10,
+18
+);
+
+
+
+// Gözler
+
+
+ctx.fillStyle="#000";
+
+
+ctx.beginPath();
+
+
+ctx.arc(
+x+42,
+y+15,
+4,
+0,
+Math.PI*2
+);
+
+
+ctx.arc(
+x+58,
+y+15,
+4,
+0,
+Math.PI*2
+);
+
+
+ctx.fill();
+
+
+
+// Gülümseme
+
+
+ctx.strokeStyle="#000";
+
+ctx.lineWidth=2;
+
+
+ctx.beginPath();
+
+
+ctx.arc(
+x+50,
+y+23,
+8,
+0,
+Math.PI
+);
+
+
+ctx.stroke();
+
+
+
+// Animasyon ilerletme
+
+
+player.runFrame+=0.25;
+
+
+
+}
+
+
+
 
 //=========================
 // ZIPLAMA
 //=========================
 
+
 function jump(){
 
-    if(!running) return;
 
-    if(!player.jumping){
+if(!running)return;
 
-        player.velocityY = player.jumpPower;
 
-        player.jumping = true;
 
-        return;
+if(!player.jumping){
 
-    }
 
-    if(!player.doubleJump){
+player.velocityY=
+player.jumpPower;
 
-        player.velocityY = player.doubleJumpPower;
 
-        player.doubleJump = true;
+player.jumping=true;
 
-    }
 
 }
 
-//=========================
-// KLAVYE
-//=========================
+else if(!player.doubleJump){
 
-document.addEventListener("keydown",(e)=>{
 
-    if(e.code==="Space"){
+player.velocityY=
+player.doubleJumpPower;
 
-        jump();
 
-    }
+player.doubleJump=true;
 
-    if(e.code==="ArrowUp"){
 
-        jump();
+}
 
-    }
+
+}
+
+
+
+
+// Klavye
+
+document.addEventListener(
+"keydown",
+e=>{
+
+
+if(e.code==="Space" ||
+e.code==="ArrowUp"){
+
+
+jump();
+
+
+}
+
 
 });
 
-//=========================
-// MOBİL
-//=========================
 
-document.addEventListener("touchstart",()=>{
 
-    jump();
+// Telefon
+
+canvas.addEventListener(
+"touchstart",
+()=>{
+
+
+jump();
+
 
 });
 
+
+
+
+
 //=========================
-// OYUNCU GÜNCELLE
+// OYUNCU HAREKETİ
 //=========================
+
 
 function updatePlayer(){
 
-    player.velocityY += gravity;
 
-    player.y += player.velocityY;
 
-    if(player.y >= groundY-player.height){
+player.velocityY+=gravity;
 
-        player.y = groundY-player.height;
 
-        player.velocityY = 0;
 
-        player.jumping = false;
+player.y+=player.velocityY;
 
-        player.doubleJump = false;
 
-    }
+
+if(player.y >= groundY-player.height){
+
+
+player.y =
+groundY-player.height;
+
+
+player.velocityY=0;
+
+
+player.jumping=false;
+
+
+player.doubleJump=false;
+
+
+}
+
 
 }/*==================================================
- KOŞ BETON KOŞ
+ KOŞ BETON KOŞ v2
  SCRIPT.JS
- Bölüm 3
+ BÖLÜM 3
 ==================================================*/
+
 
 //=========================
 // ÇARPIŞMA
 //=========================
 
-function collide(a,b){
+function collision(a,b){
 
-    return(
+return (
 
-        a.x < b.x + b.width &&
-        a.x + a.width > b.x &&
-        a.y < b.y + b.height &&
-        a.y + a.height > b.y
+a.x < b.x + b.width &&
 
-    );
+a.x + a.width > b.x &&
+
+a.y < b.y + b.height &&
+
+a.y + a.height > b.y
+
+);
 
 }
 
-//=========================
-// ZAMANLAYICILAR
-//=========================
 
-let obstacleTimer = 0;
-let itemTimer = 0;
 
 //=========================
-// ENGEL OLUŞTUR
+// ENGEL SİSTEMİ
 //=========================
+
+
+let obstacleTimer=0;
+
 
 function createObstacle(){
 
-    const types=["rock","box","spike"];
 
-    const type=types[
-        Math.floor(Math.random()*types.length)
-    ];
+let types=[
 
-    let obstacle={
+"rock",
+"box",
+"spike"
 
-        type:type,
+];
 
-        x:canvas.width,
 
-        width:70,
+let type=
+types[
+Math.floor(Math.random()*types.length)
+];
 
-        height:70,
 
-        y:groundY-70
 
-    };
+let obstacle={
 
-    if(type==="box"){
 
-        obstacle.width=80;
-        obstacle.height=80;
-        obstacle.y=groundY-80;
+type:type,
 
-    }
 
-    if(type==="spike"){
+x:canvas.width,
 
-        obstacle.width=60;
-        obstacle.height=60;
-        obstacle.y=groundY-60;
 
-    }
+y:groundY-60,
 
-    obstacles.push(obstacle);
 
-}
+width:60,
 
-//=========================
-// EŞYA OLUŞTUR
-//=========================
 
-function createItem(){
+height:60
 
-    const list=[
-        "note",
-        "record",
-        "banana",
-        "heart",
-        "star"
-    ];
 
-    const type=list[
-        Math.floor(Math.random()*list.length)
-    ];
+};
 
-    items.push({
 
-        type:type,
 
-        x:canvas.width,
 
-        y:groundY-120-Math.random()*170,
+if(type==="spike"){
 
-        width:45,
 
-        height:45
+obstacle.height=50;
 
-    });
+
+obstacle.y=groundY-50;
+
 
 }
 
-//=========================
-// ENGELLER
-//=========================
+
+
+
+if(type==="box"){
+
+
+obstacle.width=70;
+
+
+obstacle.height=70;
+
+
+obstacle.y=groundY-70;
+
+
+}
+
+
+
+obstacles.push(obstacle);
+
+
+}
+
+
+
+
 
 function updateObstacles(){
 
-    for(let i=obstacles.length-1;i>=0;i--){
 
-        const obs=obstacles[i];
 
-        obs.x-=gameSpeed;
+for(let i=obstacles.length-1;i>=0;i--){
 
-        if(collide(player,obs)){
 
-            if(!player.invincible){
+let o=obstacles[i];
 
-                lives--;
 
-                player.invincible=true;
+o.x-=gameSpeed;
 
-                setTimeout(()=>{
 
-                    player.invincible=false;
 
-                },1000);
+if(collision(player,o)){
 
-                particles.push({
 
-                    x:player.x,
+if(!player.invincible){
 
-                    y:player.y,
 
-                    life:20
+lives--;
 
-                });
 
-            }
+player.invincible=true;
 
-            obstacles.splice(i,1);
 
-            if(lives<=0){
 
-                gameOverGame();
+setTimeout(()=>{
 
-            }
 
-            continue;
+player.invincible=false;
 
-        }
 
-        if(obs.x<-100){
+},1200);
 
-            obstacles.splice(i,1);
 
-        }
-
-    }
 
 }
 
+
+
+if(lives<=0){
+
+
+endGame();
+
+
+}
+
+
+
+obstacles.splice(i,1);
+
+
+
+}
+
+
+
+if(o.x<-100){
+
+
+obstacles.splice(i,1);
+
+
+}
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+function drawObstacles(){
+
+
+obstacles.forEach(o=>{
+
+
+if(o.type==="rock"){
+
+
+ctx.fillStyle="#555";
+
+
+ctx.beginPath();
+
+
+ctx.arc(
+
+o.x+30,
+
+o.y+30,
+
+30,
+
+0,
+
+Math.PI*2
+
+);
+
+
+ctx.fill();
+
+
+}
+
+
+
+if(o.type==="box"){
+
+
+ctx.fillStyle="#8b4513";
+
+
+ctx.fillRect(
+
+o.x,
+
+o.y,
+
+o.width,
+
+o.height
+
+);
+
+
+}
+
+
+
+
+if(o.type==="spike"){
+
+
+ctx.fillStyle="#ddd";
+
+
+ctx.beginPath();
+
+
+ctx.moveTo(
+
+o.x,
+
+o.y+o.height
+
+);
+
+
+ctx.lineTo(
+
+o.x+o.width/2,
+
+o.y
+
+);
+
+
+ctx.lineTo(
+
+o.x+o.width,
+
+o.y+o.height
+
+);
+
+
+ctx.fill();
+
+
+}
+
+
+
+});
+
+
+
+}
+
+
+
+
 //=========================
-// EŞYALAR
+// TOPLANABİLİR NESNELER
 //=========================
+
+
+
+let itemTimer=0;
+
+
+
+function createItem(){
+
+
+let types=[
+
+"note",
+"record",
+"banana",
+"heart",
+"star"
+
+];
+
+
+
+let type=
+
+types[
+
+Math.floor(Math.random()*types.length)
+
+];
+
+
+
+items.push({
+
+
+type:type,
+
+
+x:canvas.width,
+
+
+y:
+groundY-100-Math.random()*150,
+
+
+width:40,
+
+
+height:40
+
+
+});
+
+
+
+}
+
+
+
+
 
 function updateItems(){
 
-    for(let i=items.length-1;i>=0;i--){
 
-        const item=items[i];
 
-        item.x-=gameSpeed;
+for(let i=items.length-1;i>=0;i--){
 
-        if(collide(player,item)){
 
-            switch(item.type){
+let item=items[i];
 
-                case "note":
 
-                    notes++;
-                    score+=10;
-                    break;
+item.x-=gameSpeed;
 
-                case "record":
 
-                    records++;
-                    score+=100;
-                    break;
 
-                case "banana":
+if(collision(player,item)){
 
-                    player.superJump=true;
 
-                    player.jumpPower=-24;
 
-                    player.doubleJumpPower=-32;
+switch(item.type){
 
-                    setTimeout(()=>{
 
-                        player.superJump=false;
 
-                        player.jumpPower=-18;
+case "note":
 
-                        player.doubleJumpPower=-25;
+notes++;
 
-                    },5000);
+score+=10;
 
-                    break;
+break;
 
-                case "heart":
 
-                    if(lives<3){
 
-                        lives++;
+case "record":
 
-                    }
+records++;
 
-                    break;
+score+=100;
 
-                case "star":
+break;
 
-                    player.invincible=true;
 
-                    setTimeout(()=>{
 
-                        player.invincible=false;
+case "banana":
 
-                    },5000);
 
-                    break;
+player.jumpPower=-25;
 
-            }
 
-            particles.push({
+setTimeout(()=>{
 
-                x:item.x,
 
-                y:item.y,
+player.jumpPower=-17;
 
-                life:20
 
-            });
+},5000);
 
-            items.splice(i,1);
 
-            continue;
+break;
 
-        }
 
-        if(item.x<-100){
 
-            items.splice(i,1);
+case "heart":
 
-        }
 
-    }/*==================================================
- KOŞ BETON KOŞ
+if(lives<3){
+
+lives++;
+
+}
+
+
+break;
+
+
+
+case "star":
+
+
+player.invincible=true;
+
+
+setTimeout(()=>{
+
+
+player.invincible=false;
+
+
+},5000);
+
+
+break;
+
+
+
+}
+
+
+
+items.splice(i,1);
+
+
+
+}
+
+
+
+if(item.x<-100){
+
+
+items.splice(i,1);
+
+
+}
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+function drawItems(){
+
+
+
+ctx.font="35px Arial";
+
+
+
+items.forEach(item=>{
+
+
+
+let emoji="";
+
+
+
+if(item.type==="note")
+emoji="🎵";
+
+
+if(item.type==="record")
+emoji="📀";
+
+
+if(item.type==="banana")
+emoji="🍌";
+
+
+if(item.type==="heart")
+emoji="💙";
+
+
+if(item.type==="star")
+emoji="⭐";
+
+
+
+ctx.fillText(
+
+emoji,
+
+item.x,
+
+item.y
+
+);
+
+
+
+});
+
+
+
+}/*==================================================
+ KOŞ BETON KOŞ v2
  SCRIPT.JS
- Bölüm 4
+ BÖLÜM 4
 ==================================================*/
+
 
 //=========================
 // ARKA PLAN
 //=========================
 
+
+let cloudX=0;
+
+
 function drawBackground(){
 
-    // Gökyüzü
-    ctx.fillStyle="#7dd3ff";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    // Zemin
-    ctx.fillStyle="#3f9b3f";
-    ctx.fillRect(
-        0,
-        groundY,
-        canvas.width,
-        canvas.height-groundY
-    );
+// Gökyüzü
 
-    // Yol
-    ctx.fillStyle="#555";
-    ctx.fillRect(
-        0,
-        groundY+40,
-        canvas.width,
-        70
-    );
+let sky =
+ctx.createLinearGradient(
+0,
+0,
+0,
+canvas.height
+);
 
-}
 
-//=========================
-// OYUNCU
-//=========================
+sky.addColorStop(
+0,
+"#63d8ff"
+);
 
-function drawPlayer(){
 
-    if(playerImage.complete){
+sky.addColorStop(
+1,
+"#e9fbff"
+);
 
-        ctx.drawImage(
 
-            playerImage,
 
-            player.x,
+ctx.fillStyle=sky;
 
-            player.y,
 
-            player.width,
+ctx.fillRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
 
-            player.height
 
-        );
 
-    }else{
+// Dağlar
 
-        ctx.fillStyle="white";
 
-        ctx.fillRect(
+ctx.fillStyle="#78a87a";
 
-            player.x,
 
-            player.y,
+ctx.beginPath();
 
-            player.width,
 
-            player.height
+ctx.moveTo(
+0,
+groundY
+);
 
-        );
 
-    }
+ctx.lineTo(
+150,
+groundY-180
+);
 
-    // Yenilmezlik efekti
 
-    if(player.invincible){
+ctx.lineTo(
+300,
+groundY
+);
 
-        ctx.strokeStyle="yellow";
-        ctx.lineWidth=4;
 
-        ctx.strokeRect(
+ctx.fill();
 
-            player.x-4,
-            player.y-4,
-            player.width+8,
-            player.height+8
 
-        );
 
-    }
+ctx.beginPath();
 
-}
 
-//=========================
-// ENGELLER
-//=========================
+ctx.moveTo(
+250,
+groundY
+);
 
-function drawObstacles(){
 
-    obstacles.forEach(obs=>{
+ctx.lineTo(
+450,
+groundY-220
+);
 
-        if(obs.type==="rock"){
 
-            ctx.fillStyle="#6b6b6b";
+ctx.lineTo(
+650,
+groundY
+);
 
-            ctx.beginPath();
 
-            ctx.arc(
-                obs.x+35,
-                obs.y+35,
-                35,
-                0,
-                Math.PI*2
-            );
+ctx.fill();
 
-            ctx.fill();
 
-        }
 
-        if(obs.type==="box"){
 
-            ctx.fillStyle="#8b5a2b";
+// Bulutlar
 
-            ctx.fillRect(
-                obs.x,
-                obs.y,
-                obs.width,
-                obs.height
-            );
 
-        }
+ctx.fillStyle="white";
 
-        if(obs.type==="spike"){
 
-            ctx.fillStyle="#cccccc";
+for(let i=0;i<5;i++){
 
-            ctx.beginPath();
 
-            ctx.moveTo(obs.x,obs.y+obs.height);
+let x =
+(i*250)-cloudX;
 
-            ctx.lineTo(obs.x+obs.width/2,obs.y);
 
-            ctx.lineTo(obs.x+obs.width,obs.y+obs.height);
+ctx.beginPath();
 
-            ctx.closePath();
 
-            ctx.fill();
+ctx.arc(
+x,
+120,
+35,
+0,
+Math.PI*2
+);
 
-        }
 
-    });
+ctx.arc(
+x+40,
+120,
+45,
+0,
+Math.PI*2
+);
+
+
+ctx.arc(
+x+80,
+120,
+35,
+0,
+Math.PI*2
+);
+
+
+ctx.fill();
+
 
 }
 
-//=========================
-// TOPLANABİLİRLER
-//=========================
 
-function drawItems(){
 
-    ctx.font="34px Arial";
+cloudX+=0.5;
 
-    items.forEach(item=>{
 
-        switch(item.type){
 
-            case "note":
-                ctx.fillText("🎵",item.x,item.y);
-                break;
+if(cloudX>250){
 
-            case "record":
-                ctx.fillText("📀",item.x,item.y);
-                break;
-
-            case "banana":
-                ctx.fillText("🍌",item.x,item.y);
-                break;
-
-            case "heart":
-                ctx.fillText("💙",item.x,item.y);
-                break;
-
-            case "star":
-                ctx.fillText("⭐",item.x,item.y);
-                break;
-
-        }
-
-    });
+cloudX=0;
 
 }
 
+
+
+// Zemin
+
+
+ctx.fillStyle="#4caf50";
+
+
+ctx.fillRect(
+
+0,
+
+groundY,
+
+canvas.width,
+
+canvas.height-groundY
+
+);
+
+
+
+// Yol
+
+
+ctx.fillStyle="#555";
+
+
+ctx.fillRect(
+
+0,
+
+groundY+40,
+
+canvas.width,
+
+80
+
+);
+
+
+
+}
+
+
 //=========================
-// PARÇACIKLAR
+// PARÇACIK
 //=========================
+
+
+function createParticle(x,y){
+
+
+for(let i=0;i<10;i++){
+
+
+particles.push({
+
+
+x:x,
+
+
+y:y,
+
+
+size:Math.random()*8+3,
+
+
+speedX:
+Math.random()*6-3,
+
+
+speedY:
+Math.random()*-5,
+
+
+life:50
+
+
+});
+
+}
+
+
+}
+
+
+
 
 function updateParticles(){
 
-    for(let i=particles.length-1;i>=0;i--){
 
-        particles[i].life--;
 
-        if(particles[i].life<=0){
+for(let i=particles.length-1;i>=0;i--){
 
-            particles.splice(i,1);
 
-        }
+let p=particles[i];
 
-    }
+
+p.x+=p.speedX;
+
+
+p.y+=p.speedY;
+
+
+p.speedY+=0.2;
+
+
+p.life--;
+
+
+
+if(p.life<=0){
+
+
+particles.splice(i,1);
+
 
 }
+
+
+}
+
+
+
+}
+
+
 
 function drawParticles(){
 
-    particles.forEach(p=>{
 
-        ctx.fillStyle="white";
+ctx.fillStyle="#fff";
 
-        ctx.beginPath();
 
-        ctx.arc(
+particles.forEach(p=>{
 
-            p.x,
 
-            p.y,
+ctx.fillRect(
 
-            6,
+p.x,
 
-            0,
+p.y,
 
-            Math.PI*2
+p.size,
 
-        );
+p.size
 
-        ctx.fill();
+);
 
-    });
+
+});
+
 
 }
+
+
 
 //=========================
 // HUD
 //=========================
 
+
 function updateHUD(){
 
-    scoreValue.textContent=score;
 
-    distanceValue.textContent=
-    Math.floor(distance);
+scoreValue.innerHTML=
+Math.floor(score);
 
-    noteValue.textContent=notes;
 
-    recordValue.textContent=records;
+distanceValue.innerHTML=
+Math.floor(distance);
 
-    lifeBar.textContent=
-    "💙".repeat(lives);
+
+noteValue.innerHTML=
+notes;
+
+
+recordValue.innerHTML=
+records;
+
+
+
+lifeBar.innerHTML=
+"💙".repeat(lives);
+
+
 
 }
+
+
+
+
+//=========================
+// SKOR
+//=========================
+
+
+function updateScore(){
+
+
+distance+=gameSpeed/10;
+
+
+score+=1;
+
+
+
+if(distance%1000<1){
+
+
+gameSpeed+=0.5;
+
+
+}
+
+
+
+}
+
+
+
 
 //=========================
 // GAME OVER
 //=========================
 
-function gameOverGame(){
 
-    running=false;
+function endGame(){
 
-    bgMusic.pause();
 
-    gameOver.classList.remove("hidden");
+running=false;
 
-    document.getElementById("finalScore").textContent=score;
 
-    document.getElementById("finalDistance").textContent=
-    Math.floor(distance)+" m";
 
-    let best=
-    Number(localStorage.getItem("bestScore"))||0;
+game.classList.add("hidden");
 
-    if(score>best){
 
-        localStorage.setItem(
-            "bestScore",
-            score
-        );
+gameOver.classList.remove("hidden");
 
-    }
 
-                       }/*==================================================
- KOŞ BETON KOŞ
- SCRIPT.JS
- Bölüm 5
-==================================================*/
 
-//=========================
-// OYUN DÖNGÜSÜ
-//=========================
+document.getElementById("finalScore")
+.innerHTML=
+Math.floor(score);
 
-function gameLoop(){
 
-    if(!running) return;
 
-    requestAnimationFrame(gameLoop);
+document.getElementById("finalDistance")
+.innerHTML=
+Math.floor(distance)+" m";
 
-    // Temizle
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
 
-    // Fizik
 
-    updatePlayer();
+saveHighScore();
 
-    updateParticles();
 
-    // Sayaçlar
-
-    obstacleTimer--;
-
-    itemTimer--;
-
-    // Engel üret
-
-    if(obstacleTimer<=0){
-
-        createObstacle();
-
-        obstacleTimer=
-        Math.floor(Math.random()*70)+70;
-
-    }
-
-    // Eşya üret
-
-    if(itemTimer<=0){
-
-        createItem();
-
-        itemTimer=
-        Math.floor(Math.random()*90)+90;
-
-    }
-
-    // Güncelle
-
-    updateObstacles();
-
-    updateItems();
-
-    // Mesafe
-
-    distance+=gameSpeed/12;
-
-    // Skor
-
-    score++;
-
-    // Oyun gittikçe hızlansın
-
-    if(gameSpeed<18){
-
-        gameSpeed+=0.0015;
-
-    }
-
-    // Çizimler
-
-    drawBackground();
-
-    drawObstacles();
-
-    drawItems();
-
-    drawParticles();
-
-    drawPlayer();
-
-    updateHUD();
 
 }
 
+
+
+
 //=========================
-// YÜKSEK SKOR
+// REKOR
 //=========================
+
+
+function saveHighScore(){
+
+
+let best =
+localStorage.getItem(
+"betonBest"
+)||0;
+
+
+
+if(score>best){
+
+
+localStorage.setItem(
+"betonBest",
+Math.floor(score)
+);
+
+
+}
+
+
+
+}
+
+
 
 function loadHighScore(){
 
-    let best=
-    Number(localStorage.getItem("bestScore"))||0;
 
-    document.getElementById("bestScore").textContent=best;
+let best =
+localStorage.getItem(
+"betonBest"
+)||0;
+
+
+
+document.getElementById(
+"bestScore"
+).innerHTML=best;
+
+
 
 }
 
-loadHighScore();
+
+loadHighScore();/*==================================================
+ KOŞ BETON KOŞ v2
+ SCRIPT.JS
+ BÖLÜM 5 - SON
+==================================================*/
+
 
 //=========================
-// OYUN BAŞLANGICI
+// BAŞARIM SİSTEMİ
 //=========================
 
-window.onload=()=>{
 
-    resizeCanvas();
+const achievements=[
 
-    resetPlayer();
+{
+name:"İlk Koşu",
+check:()=>distance>=100
+},
+
+{
+name:"Nota Toplayıcı",
+check:()=>notes>=50
+},
+
+{
+name:"Plak Ustası",
+check:()=>records>=10
+},
+
+{
+name:"Uzun Mesafe",
+check:()=>distance>=5000
+},
+
+{
+name:"Yıldız Gücü",
+check:()=>player.invincible
+}
+
+];
+
+
+
+let unlockedAchievements =
+JSON.parse(
+localStorage.getItem("achievements")
+) || [];
+
+
+
+function checkAchievements(){
+
+
+achievements.forEach(a=>{
+
+
+if(
+a.check()
+&&
+!unlockedAchievements.includes(a.name)
+){
+
+
+unlockedAchievements.push(a.name);
+
+
+
+}
+
+
+});
+
+
+
+localStorage.setItem(
+"achievements",
+JSON.stringify(unlockedAchievements)
+);
+
+
+
+}
+
+
+
+
+
+//=========================
+// BAŞARIM GÖSTER
+//=========================
+
+
+function showAchievements(){
+
+
+const list =
+document.getElementById(
+"achievementList"
+);
+
+
+
+list.innerHTML="";
+
+
+
+unlockedAchievements.forEach(a=>{
+
+
+let p =
+document.createElement("p");
+
+
+p.innerHTML=
+"🏆 "+a;
+
+
+list.appendChild(p);
+
+
+
+});
+
+
+}
+
+
+
+achievementBtn.onclick=()=>{
+
+
+menu.classList.add("hidden");
+
+
+document
+.getElementById("achievementMenu")
+.classList.remove("hidden");
+
+
+showAchievements();
+
 
 };
 
+
+
+
+
+
 //=========================
-// KONSOL
+// ANA OYUN DÖNGÜSÜ
 //=========================
 
-console.log("KOŞ BETON KOŞ BAŞLATILDI");
+
+function gameLoop(){
+
+
+if(!running)
+return;
+
+
+
+ctx.clearRect(
+
+0,
+
+0,
+
+canvas.width,
+
+canvas.height
+
+);
+
+
+
+
+// Güncelleme
+
+
+updateScore();
+
+
+updatePlayer();
+
+
+updateObstacles();
+
+
+updateItems();
+
+
+updateParticles();
+
+
+
+
+
+// Oluşturma
+
+
+obstacleTimer--;
+
+
+itemTimer--;
+
+
+
+if(obstacleTimer<=0){
+
+
+createObstacle();
+
+
+obstacleTimer =
+Math.random()*80+80;
+
 
 }
+
+
+
+if(itemTimer<=0){
+
+
+createItem();
+
+
+itemTimer =
+Math.random()*120+80;
+
+
+}
+
+
+
+
+
+// Çizimler
+
+
+drawBackground();
+
+
+drawObstacles();
+
+
+drawItems();
+
+
+drawParticles();
+
+
+drawPlayer();
+
+
+
+updateHUD();
+
+
+checkAchievements();
+
+
+
+
+requestAnimationFrame(
+gameLoop
+);
+
+
+
+}
+
+
+
+
+
+
+//=========================
+// DURAKLATMA
+//=========================
+
+
+let paused=false;
+
+
+
+document.addEventListener(
+"keydown",
+e=>{
+
+
+if(e.key==="p"){
+
+
+paused=!paused;
+
+
+if(!paused){
+
+gameLoop();
+
+}
+
+
+}
+
+
+
+});
+
+
+
+
+
+//=========================
+// BAŞLATMA DÜZENİ
+//=========================
+
+
+window.addEventListener(
+"load",
+()=>{
+
+
+resizeCanvas();
+
+
+loadHighScore();
+
+
+
+}
+);
+
+
+
+
+
+console.log(
+"KOŞ BETON KOŞ v2 hazır!"
+);
