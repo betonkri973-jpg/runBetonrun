@@ -4,7 +4,8 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>🏃 Koş Beton Koş</title>
 
@@ -15,7 +16,7 @@
 <body>
 
 <!-- ========================= -->
-<!-- LOADING -->
+<!-- YÜKLENİYOR -->
 <!-- ========================= -->
 
 <div id="loading">
@@ -25,7 +26,7 @@
 </div>
 
 <!-- ========================= -->
-<!-- INTRO -->
+<!-- GİRİŞ -->
 <!-- ========================= -->
 
 <div id="intro">
@@ -87,12 +88,18 @@
 <div id="achievementList">
 
 <p>🥉 İlk Adım</p>
+
 <p>🎵 100 Nota Topla</p>
+
 <p>📀 10 Plak Topla</p>
+
+<p>💙 İlk Kalp Topla</p>
+
+<p>⭐ Yıldız Gücünü Kullan</p>
+
+<p>🏃 1000 Metre Koş</p>
+
 <p>🏃 5000 Metre Koş</p>
-<p>🔥 Fever Ustası</p>
-<p>👹 Boss Kaçışı</p>
-<p>💎 Legendary Crystal</p>
 
 </div>
 
@@ -105,12 +112,16 @@
 </div>
 
 <!-- ========================= -->
-<!-- REKOR -->
+<!-- EN YÜKSEK SKOR -->
 <!-- ========================= -->
 
 <div id="highScoreMenu" class="hidden">
 
-<h2>🥇 En Yüksek Skor</h2>
+<h2>
+
+🥇 En Yüksek Skor
+
+</h2>
 
 <h1 id="bestScore">
 
@@ -132,23 +143,27 @@
 
 <div id="helpMenu" class="hidden">
 
-<h2>ℹ Nasıl Oynanır</h2>
+<h2>
+
+ℹ Nasıl Oynanır
+
+</h2>
 
 <p>👆 Dokun = Zıpla</p>
 
-<p>👆👆 Çift Dokun = Yüksek Zıpla</p>
+<p>👆👆 Hızlı Çift Dokun = Çift Zıpla</p>
 
 <p>🎵 Nota = +10 Puan</p>
 
 <p>📀 Plak = +100 Puan</p>
 
-<p>🍌 Muz = Süper Hız</p>
+<p>🍌 Muz = Süper Zıplama</p>
 
 <p>💙 Kalp = +1 Can</p>
 
-<p>💎 Legendary Crystal = 3X Puan</p>
+<p>⭐ Yıldız = 5 sn Yenilmezlik</p>
 
-<p>👹 5000 metrede Boss gelir.</p>
+<p>🪨 Engellere çarpmamaya çalış.</p>
 
 <button class="backButton">
 
@@ -156,7 +171,7 @@
 
 </button>
 
-</div><!-- ========================= -->
+    </div><!-- ========================= -->
 <!-- OYUN -->
 <!-- ========================= -->
 
@@ -173,11 +188,12 @@
         </div>
 
         <div id="score">
-            Archive Puanı<br>
+            Puan<br>
             <span id="scoreValue">0</span>
         </div>
 
         <div id="distance">
+            Mesafe<br>
             <span id="distanceValue">0</span> m
         </div>
 
@@ -190,30 +206,6 @@
         </div>
 
     </div>
-
-</div>
-
-<!-- ========================= -->
-<!-- GAME OVER -->
-<!-- ========================= -->
-
-<div id="gameOver" class="hidden">
-
-    <h1>💀 GAME OVER</h1>
-
-    <h2>Archive Puanı</h2>
-
-    <h1 id="finalScore">0</h1>
-
-    <h3 id="finalDistance">0 Metre</h3>
-
-    <button id="restartBtn">
-        🔄 Tekrar Oyna
-    </button>
-
-    <button id="menuBtn">
-        🏠 Ana Menü
-    </button>
 
 </div>
 
@@ -232,78 +224,42 @@
 </div>
 
 <!-- ========================= -->
-<!-- BOSS -->
+<!-- GAME OVER -->
 <!-- ========================= -->
 
-<div id="bossWarning" class="hidden">
+<div id="gameOver" class="hidden">
 
     <h1>
 
-        ⚠️ BOSS KAÇIŞI
+        💀 GAME OVER
 
     </h1>
 
-    <p>
+    <h2>
 
-        KAÇ!
+        Toplam Puan
 
-    </p>
+    </h2>
 
-</div>
+    <h1 id="finalScore">
 
-<!-- ========================= -->
-<!-- FEVER -->
-<!-- ========================= -->
-
-<div id="feverScreen" class="hidden">
-
-    <h1>
-
-        🔥 FEVER MODE
+        0
 
     </h1>
 
-</div>
+    <h3 id="finalDistance">
 
-<!-- ========================= -->
-<!-- LEGENDARY -->
-<!-- ========================= -->
+        0 m
 
-<div id="legendaryScreen" class="hidden">
+    </h3>
 
-    <h1>
+    <button id="restartBtn">
 
-        🌈 LEGENDARY
-
-    </h1>
-
-    <p>
-
-        3X PUAN
-
-    </p>
-
-</div>
-
-<!-- ========================= -->
-<!-- DURAKLAT -->
-<!-- ========================= -->
-
-<div id="pauseMenu" class="hidden">
-
-    <h1>
-
-        ⏸️ Duraklatıldı
-
-    </h1>
-
-    <button id="continueBtn">
-
-        ▶ Devam Et
+        🔄 Tekrar Oyna
 
     </button>
 
-    <button id="pauseMenuBtn">
+    <button id="menuBtn">
 
         🏠 Ana Menü
 
@@ -336,14 +292,8 @@ style="display:none;"
 <!-- JAVASCRIPT -->
 <!-- ========================= -->
 
-<script src="player.js"></script>
-<script src="obstacles.js"></script>
-<script src="effects.js"></script>
-<script src="boss.js"></script>
-<script src="save.js"></script>
-<script src="ui.js"></script>
-<script src="engine.js"></script>
 <script src="script.js"></script>
 
 </body>
-  </html>
+
+    </html>
