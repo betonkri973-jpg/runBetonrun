@@ -7,121 +7,119 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🏃 Koş Beton Koş</title>
+<title>Koş Beton Koş</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
-<!-- ========================= -->
-<!-- YÜKLENİYOR -->
-<!-- ========================= -->
+
+<!-- YÜKLEME -->
 
 <div id="loading">
 
-    <h1>Yükleniyor...</h1>
+<h1>Yükleniyor...</h1>
 
 </div>
 
-<!-- ========================= -->
-<!-- GİRİŞ -->
-<!-- ========================= -->
+
+
+<!-- AÇILIŞ -->
 
 <div id="intro">
 
-    <h1 id="introTitle">
+<h1 id="introTitle">
 
-        Beton Archive Sunar
+Beton Archive Sunar
 
-    </h1>
+</h1>
 
 </div>
 
-<!-- ========================= -->
+
+
+
 <!-- ANA MENÜ -->
-<!-- ========================= -->
 
-<div id="menu" class="hidden">
+<div id="menu" class="screen hidden">
 
-    <h1 id="gameTitle">
 
-        🏃 KOŞ BETON KOŞ
+<h1 id="gameTitle">
 
-    </h1>
+🏃 Koş Beton Koş
 
-    <button id="playBtn">
+</h1>
 
-        ▶ Oyuna Başla
 
-    </button>
+<button id="playBtn">
+▶️ Oyuna Başla
+</button>
 
-    <button id="achievementBtn">
 
-        🏆 Başarımlar
+<button id="achievementBtn">
+🏆 Başarımlar
+</button>
 
-    </button>
 
-    <button id="scoreBtn">
+<button id="scoreBtn">
+🥇 En Yüksek Skor
+</button>
 
-        🥇 En Yüksek Skor
 
-    </button>
+<button id="helpBtn">
+ℹ️ Nasıl Oynanır
+</button>
 
-    <button id="helpBtn">
-
-        ℹ Nasıl Oynanır
-
-    </button>
 
 </div>
 
-<!-- ========================= -->
+
+
+
 <!-- BAŞARIMLAR -->
-<!-- ========================= -->
 
-<div id="achievementMenu" class="hidden">
+<div id="achievementMenu" class="screen hidden">
 
-<h2>🏆 Başarımlar</h2>
+
+<h2>
+🏆 Başarımlar
+</h2>
+
 
 <div id="achievementList">
 
-<p>🥉 İlk Adım</p>
-
-<p>🎵 100 Nota Topla</p>
-
-<p>📀 10 Plak Topla</p>
-
-<p>💙 İlk Kalp Topla</p>
-
-<p>⭐ Yıldız Gücünü Kullan</p>
-
-<p>🏃 1000 Metre Koş</p>
-
-<p>🏃 5000 Metre Koş</p>
+<p>🥉 İlk Koşu</p>
+<p>🎵 100 Nota</p>
+<p>📀 10 Plak</p>
+<p>🏃 5000 Metre</p>
+<p>⭐ Yenilmez</p>
 
 </div>
+
 
 <button class="backButton">
-
-⬅ Geri
-
+⬅️ Geri
 </button>
+
 
 </div>
 
-<!-- ========================= -->
-<!-- EN YÜKSEK SKOR -->
-<!-- ========================= -->
 
-<div id="highScoreMenu" class="hidden">
+
+
+
+<!-- SKOR -->
+
+<div id="highScoreMenu" class="screen hidden">
+
 
 <h2>
-
 🥇 En Yüksek Skor
-
 </h2>
+
 
 <h1 id="bestScore">
 
@@ -129,170 +127,194 @@
 
 </h1>
 
+
 <button class="backButton">
-
-⬅ Geri
-
+⬅️ Geri
 </button>
+
 
 </div>
 
-<!-- ========================= -->
-<!-- NASIL OYNANIR -->
-<!-- ========================= -->
 
-<div id="helpMenu" class="hidden">
+
+
+
+<!-- YARDIM -->
+
+<div id="helpMenu" class="screen hidden">
+
 
 <h2>
-
-ℹ Nasıl Oynanır
-
+ℹ️ Nasıl Oynanır
 </h2>
 
-<p>👆 Dokun = Zıpla</p>
 
-<p>👆👆 Hızlı Çift Dokun = Çift Zıpla</p>
+<p>
+👆 Dokun = Zıpla
+</p>
 
-<p>🎵 Nota = +10 Puan</p>
+<p>
+👆👆 Çift dokun = Çift zıpla
+</p>
 
-<p>📀 Plak = +100 Puan</p>
+<p>
+🎵 Nota = Puan
+</p>
 
-<p>🍌 Muz = Süper Zıplama</p>
+<p>
+📀 Plak = Büyük puan
+</p>
 
-<p>💙 Kalp = +1 Can</p>
+<p>
+🍌 Muz = Süper zıplama
+</p>
 
-<p>⭐ Yıldız = 5 sn Yenilmezlik</p>
+<p>
+💙 Kalp = Can
+</p>
 
-<p>🪨 Engellere çarpmamaya çalış.</p>
 
 <button class="backButton">
-
-⬅ Geri
-
+⬅️ Geri
 </button>
 
-    </div><!-- ========================= -->
+
+</div>
+
+
+
+
+
 <!-- OYUN -->
-<!-- ========================= -->
 
 <div id="game" class="hidden">
 
-    <canvas id="gameCanvas"></canvas>
 
-    <!-- HUD -->
+<canvas id="gameCanvas"></canvas>
 
-    <div id="hud">
 
-        <div id="lifeBar">
-            💙💙💙
-        </div>
+<div id="hud">
 
-        <div id="score">
-            Puan<br>
-            <span id="scoreValue">0</span>
-        </div>
 
-        <div id="distance">
-            Mesafe<br>
-            <span id="distanceValue">0</span> m
-        </div>
+<div id="lifeBar">
 
-        <div id="notes">
-            🎵 <span id="noteValue">0</span>
-        </div>
-
-        <div id="records">
-            📀 <span id="recordValue">0</span>
-        </div>
-
-    </div>
+💙💙💙
 
 </div>
 
-<!-- ========================= -->
+
+<div>
+
+Skor:
+<span id="scoreValue">
+0
+</span>
+
+</div>
+
+
+<div>
+
+Mesafe:
+<span id="distanceValue">
+0
+</span>
+
+m
+
+</div>
+
+
+<div>
+
+🎵
+<span id="noteValue">
+0
+</span>
+
+</div>
+
+
+<div>
+
+📀
+<span id="recordValue">
+0
+</span>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- GAME OVER -->
+
+<div id="gameOver" class="screen hidden">
+
+
+<h1>
+💀 GAME OVER
+</h1>
+
+
+<h2>
+Skor
+</h2>
+
+
+<h1 id="finalScore">
+0
+</h1>
+
+
+<h3 id="finalDistance">
+0 m
+</h3>
+
+
+<button id="restartBtn">
+🔄 Tekrar Oyna
+</button>
+
+
+<button id="menuBtn">
+🏠 Menü
+</button>
+
+
+</div>
+
+
+
+
+
 <!-- BİLDİRİM -->
-<!-- ========================= -->
 
 <div id="notification" class="hidden">
 
-    <h1 id="notificationText">
 
-        READY
+<h1 id="notificationText">
 
-    </h1>
+READY
 
-</div>
+</h1>
 
-<!-- ========================= -->
-<!-- GAME OVER -->
-<!-- ========================= -->
-
-<div id="gameOver" class="hidden">
-
-    <h1>
-
-        💀 GAME OVER
-
-    </h1>
-
-    <h2>
-
-        Toplam Puan
-
-    </h2>
-
-    <h1 id="finalScore">
-
-        0
-
-    </h1>
-
-    <h3 id="finalDistance">
-
-        0 m
-
-    </h3>
-
-    <button id="restartBtn">
-
-        🔄 Tekrar Oyna
-
-    </button>
-
-    <button id="menuBtn">
-
-        🏠 Ana Menü
-
-    </button>
 
 </div>
 
-<!-- ========================= -->
-<!-- SES -->
-<!-- ========================= -->
 
-<audio id="bgMusic" loop>
 
-    <source src="gittim.m4a" type="audio/mp4">
-
-</audio>
-
-<!-- ========================= -->
-<!-- KARAKTER -->
-<!-- ========================= -->
-
-<img
-id="playerImage"
-src="karakter.png"
-alt="Karakter"
-style="display:none;"
->
-
-<!-- ========================= -->
-<!-- JAVASCRIPT -->
-<!-- ========================= -->
 
 <script src="script.js"></script>
+
 
 </body>
 
