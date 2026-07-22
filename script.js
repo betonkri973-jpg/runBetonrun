@@ -990,7 +990,8 @@ if(lives<=0){
 
 
 endGame();
-
+bgMusic.pause();
+bgMusic.currentTime = 0;
 
 }
 
