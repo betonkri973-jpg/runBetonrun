@@ -15,7 +15,7 @@ document.getElementById("gameCanvas");
 const ctx =
 canvas.getContext("2d");
 
-
+const bgMusic = document.getElementById("bgMusic");
 function resizeCanvas(){
 
     canvas.width =
@@ -289,7 +289,11 @@ playBtn.onclick=()=>{
 
 
 menu.classList.add("hidden");
+bgMusic.volume = 0.5;
 
+bgMusic.play().catch(()=>{
+    console.log("Müzik başlatılamadı");
+});
 
 game.classList.remove("hidden");
 
