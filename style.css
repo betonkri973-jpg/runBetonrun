@@ -1,472 +1,577 @@
 /*==================================================
- KOŞ BETON KOŞ
+ KOŞ BETON KOŞ v2
  STYLE.CSS
 ==================================================*/
+
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
     -webkit-tap-highlight-color:transparent;
-    font-family:Arial,Helvetica,sans-serif;
 }
 
+
 html,body{
+
     width:100%;
     height:100%;
     overflow:hidden;
     background:#000;
-    color:#fff;
-    touch-action:manipulation;
+    color:white;
+
 }
+
 
 .hidden{
+
     display:none !important;
+
 }
+
+
 
 /*=========================
- GENEL BUTONLAR
+ BUTONLAR
 =========================*/
 
+
 button{
+
+    width:320px;
+    padding:18px;
+    margin:10px;
+
     border:none;
-    outline:none;
-    cursor:pointer;
-    transition:.25s;
-    border-radius:18px;
+    border-radius:20px;
+
     font-size:24px;
     font-weight:bold;
+
+    color:white;
+
+    background:#168cff;
+
+    box-shadow:
+    0 0 20px #00d9ff;
+
+    cursor:pointer;
+
+    transition:.25s;
+
 }
 
-button:active{
-    transform:scale(.95);
+
+button:hover{
+
+    transform:scale(1.05);
+    background:#43b6ff;
+
 }
+
+
+button:active{
+
+    transform:scale(.95);
+
+}
+
+
 
 /*=========================
  LOADING
 =========================*/
 
+
 #loading{
+
     position:fixed;
+
     inset:0;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#000;
+
+    background:black;
+
     z-index:9999;
+
 }
 
+
 #loading h1{
-    color:#56b8ff;
-    font-size:48px;
-    text-shadow:0 0 20px cyan;
-    animation:pulse 1.5s infinite;
+
+    color:#00c8ff;
+
+    font-size:45px;
+
+    text-shadow:
+    0 0 25px cyan;
+
 }
+
+
 
 /*=========================
  INTRO
 =========================*/
 
+
 #intro{
+
     position:fixed;
+
     inset:0;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     background:#000;
-    z-index:9000;
-    animation:introFade 3s forwards;
+
+    z-index:5000;
+
+    animation:intro 3s forwards;
+
 }
+
+
 
 #introTitle{
-    font-size:58px;
-    color:#56b8ff;
-    text-shadow:0 0 20px cyan;
+
+    font-size:60px;
+
+    color:#00c8ff;
+
+    text-shadow:
+    0 0 30px cyan;
+
 }
+
+
+
+
 
 /*=========================
- ANA MENÜ
+ EKRANLAR
 =========================*/
 
-#menu{
+
+.screen{
+
     position:fixed;
+
     inset:0;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
-    background:linear-gradient(#0b1d30,#15496b,#2780b6);
+
+    background:
+    linear-gradient(
+    #07192d,
+    #124c75
+    );
+
+    z-index:100;
+
 }
+
+
+
+
+
+/*=========================
+ MENÜ
+=========================*/
+
 
 #gameTitle{
-    font-size:68px;
-    margin-bottom:60px;
-    text-shadow:0 0 25px cyan;
+
+    font-size:65px;
+
+    margin-bottom:50px;
+
+    text-align:center;
+
+    text-shadow:
+
+    0 0 25px cyan;
+
 }
 
-#menu button{
-    width:340px;
-    padding:18px;
-    margin:12px;
-    background:#2da8ff;
-    color:white;
-    box-shadow:0 0 18px cyan;
-}
 
-#menu button:hover{
-    background:#57bcff;
-    transform:scale(1.04);
-}
+
 
 /*=========================
  OYUN
 =========================*/
 
+
 #game{
+
     position:fixed;
+
     inset:0;
+
     overflow:hidden;
-    background:linear-gradient(#69c9ff,#a9e7ff,#ffffff);
+
+    background:#7ddcff;
+
 }
 
+
+
 #gameCanvas{
+
     width:100%;
+
     height:100%;
+
     display:block;
+
 }
+
+
 
 /*=========================
  HUD
 =========================*/
 
+
 #hud{
+
     position:absolute;
+
     top:15px;
+
     left:15px;
+
     right:15px;
+
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
+
     font-size:22px;
+
     font-weight:bold;
+
+
     pointer-events:none;
+
+
 }
+
+
 
 #hud div{
-    padding:10px 15px;
-    background:rgba(0,0,0,.35);
-    border-radius:14px;
-    backdrop-filter:blur(6px);
+
+    background:
+    rgba(0,0,0,.35);
+
+
+    padding:10px 14px;
+
+
+    border-radius:15px;
+
+
+    backdrop-filter:blur(5px);
+
+
 }
+
+
 
 #lifeBar{
+
     font-size:30px;
+
 }
+
+
+
+
 
 /*=========================
- MENÜLER
+ MENÜ İÇERİKLERİ
 =========================*/
 
-#achievementMenu,
-#highScoreMenu,
-#helpMenu,
-#gameOver{
-    position:fixed;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:rgba(0,0,0,.92);
-    z-index:500;
+
+.screen h2{
+
+    font-size:50px;
+
+    color:#58c7ff;
+
+    margin-bottom:30px;
+
+    text-shadow:
+
+    0 0 20px cyan;
+
 }
 
-#achievementMenu h2,
-#highScoreMenu h2,
-#helpMenu h2,
-#gameOver h1{
-    font-size:52px;
-    margin-bottom:25px;
-    color:#56b8ff;
-    text-shadow:0 0 20px cyan;
-}
+
 
 #achievementList{
+
     width:80%;
-    max-width:700px;
-    max-height:420px;
-    overflow:auto;
+
+    max-width:600px;
+
     padding:20px;
-    background:rgba(255,255,255,.08);
-    border-radius:18px;
+
+    background:
+
+    rgba(255,255,255,.1);
+
+
+    border-radius:20px;
+
+
 }
+
+
 
 #achievementList p{
-    padding:12px;
+
     font-size:24px;
-    border-bottom:1px solid rgba(255,255,255,.15);
+
+    padding:12px;
+
+    border-bottom:
+
+    1px solid rgba(255,255,255,.2);
+
 }
+
+
+
 
 #helpMenu p{
+
     font-size:24px;
-    margin:10px;
+
+    margin:8px;
+
 }
 
-.backButton,
-#restartBtn,
-#menuBtn{
-    width:300px;
-    padding:18px;
-    margin:12px;
-    background:#2da8ff;
-    color:white;
-    box-shadow:0 0 18px cyan;/*=========================
+
+
+
+
+/*=========================
+ SKOR
+=========================*/
+
+
+#bestScore{
+
+    font-size:90px;
+
+    color:#ffd700;
+
+    text-shadow:
+
+    0 0 25px gold;
+
+}
+
+
+
+#finalScore{
+
+    font-size:80px;
+
+    color:#00d9ff;
+
+}
+
+
+
+#finalDistance{
+
+    font-size:32px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+
+
+/*=========================
  BİLDİRİM
 =========================*/
 
+
 #notification{
+
+
     position:fixed;
+
     top:100px;
+
     left:50%;
+
+
     transform:translateX(-50%);
-    padding:18px 35px;
-    background:#2da8ff;
-    color:white;
-    border-radius:18px;
-    font-size:38px;
-    font-weight:bold;
-    box-shadow:0 0 20px cyan;
-    z-index:1000;
+
+
+    padding:20px 40px;
+
+
+    border-radius:20px;
+
+
+    background:#168cff;
+
+
+    box-shadow:
+
+    0 0 30px cyan;
+
+
+    z-index:500;
+
+
 }
+
+
 
 #notificationText{
-    margin:0;
+
+    font-size:40px;
+
 }
 
-/*=========================
- EN YÜKSEK SKOR
-=========================*/
 
-#bestScore{
-    font-size:80px;
-    color:gold;
-    margin:25px;
-    text-shadow:0 0 20px gold;
-}
 
-#finalScore{
-    font-size:80px;
-    color:#56b8ff;
-    margin:20px;
-    text-shadow:0 0 20px cyan;
-}
 
-#finalDistance{
-    font-size:30px;
-    margin-bottom:30px;
-}
-
-/*=========================
- SCROLLBAR
-=========================*/
-
-::-webkit-scrollbar{
-    width:8px;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#56b8ff;
-    border-radius:20px;
-}
 
 /*=========================
  MOBİL
 =========================*/
 
-@media (max-width:768px){
+
+@media(max-width:768px){
+
 
 #gameTitle{
+
     font-size:42px;
-    text-align:center;
+
 }
 
-#menu button{
+
+
+button{
+
     width:85%;
+
     font-size:20px;
+
 }
+
+
 
 #hud{
-    font-size:16px;
-    gap:6px;
-    flex-wrap:wrap;
+
+    font-size:15px;
+
+    gap:5px;
+
 }
+
+
 
 #hud div{
-    padding:8px 10px;
+
+    padding:7px;
+
 }
 
-#lifeBar{
-    font-size:24px;
+
+
+.screen h2{
+
+    font-size:35px;
+
 }
 
-#achievementMenu h2,
-#highScoreMenu h2,
-#helpMenu h2,
-#gameOver h1{
-    font-size:34px;
-}
+
 
 #achievementList p{
+
     font-size:18px;
+
 }
+
+
 
 #helpMenu p{
+
     font-size:18px;
-}
-
-#notification{
-    font-size:24px;
-    padding:12px 20px;
-}
-
-#bestScore,
-#finalScore{
-    font-size:50px;
-}
-
-.backButton,
-#restartBtn,
-#menuBtn{
-    width:85%;
-}
 
 }
+
+
+}
+
+
 
 /*=========================
- ANİMASYONLAR
+ ANİMASYON
 =========================*/
 
-@keyframes pulse{
+
+@keyframes intro{
+
 
 0%{
-transform:scale(1);
-}
 
-50%{
-transform:scale(1.08);
-}
-
-100%{
-transform:scale(1);
-}
-
-}
-
-@keyframes introFade{
-
-0%{
 opacity:0;
+
+transform:scale(.8);
+
 }
+
 
 20%{
+
 opacity:1;
+
 }
+
 
 80%{
+
 opacity:1;
+
 }
 
+
 100%{
+
 opacity:0;
+
 visibility:hidden;
-}
 
 }
 
-@keyframes glow{
-
-0%{
-box-shadow:0 0 10px cyan;
-}
-
-50%{
-box-shadow:0 0 35px cyan;
-}
-
-100%{
-box-shadow:0 0 10px cyan;
-}
-
-}
-
-@keyframes shake{
-
-0%{transform:translate(0);}
-25%{transform:translate(-5px,3px);}
-50%{transform:translate(5px,-3px);}
-75%{transform:translate(-5px,2px);}
-100%{transform:translate(0);}
-
-}
-
-@keyframes float{
-
-0%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-8px);
-}
-
-100%{
-transform:translateY(0);
-}
-
-}
-
-@keyframes fadeIn{
-
-from{
-opacity:0;
-}
-
-to{
-opacity:1;
-}
-
-}
-
-/*=========================
- EFEKTLER
-=========================*/
-
-.glow{
-animation:glow 1.2s infinite;
-}
-
-.hit{
-animation:shake .25s;
-}
-
-.float{
-animation:float 2s ease-in-out infinite;
-}
-
-.fadeIn{
-animation:fadeIn .5s forwards;
-}
-
-/*=========================
- CANVAS
-=========================*/
-
-canvas{
-    image-rendering:auto;
-    touch-action:none;
-}
-
-/*=========================
- SON
-=========================*/
-  }
+ }
