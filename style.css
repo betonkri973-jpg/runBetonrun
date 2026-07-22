@@ -1,3 +1,9 @@
+/*==================================================
+KOŞ BETON KOŞ
+STYLE.CSS
+Bölüm 1
+==================================================*/
+
 *{
 margin:0;
 padding:0;
@@ -6,102 +12,197 @@ box-sizing:border-box;
 font-family:Arial,Helvetica,sans-serif;
 }
 
-html,body{
+html,
+body{
+
 width:100%;
 height:100%;
 overflow:hidden;
+
 background:#000;
+
 color:#fff;
+
 touch-action:manipulation;
+
 }
 
 .hidden{
+
 display:none !important;
+
 }
 
-button{
-cursor:pointer;
-border:none;
-outline:none;
-transition:.25s;
-}
+/*=========================
+LOADING
+=========================*/
 
-button:active{
-transform:scale(.95);
-}
+#loading{
 
-/* Açılış */
-
-#intro{
 position:fixed;
+
 top:0;
 left:0;
+
 width:100%;
 height:100%;
+
 display:flex;
+
 justify-content:center;
 align-items:center;
+
 background:#000;
-z-index:999;
+
+z-index:9999;
+
+}
+
+#loading h1{
+
+font-size:48px;
+
+color:#56b8ff;
+
+text-shadow:0 0 20px cyan;
+
+animation:pulse 1.5s infinite;
+
+}
+
+/*=========================
+INTRO
+=========================*/
+
+#intro{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+background:#000;
+
+z-index:9000;
+
 animation:introFade 3s forwards;
+
 }
 
 #introTitle{
-font-size:55px;
+
+font-size:64px;
+
 color:#56b8ff;
-text-shadow:0 0 15px #56b8ff;
-animation:pulse 1.8s infinite;
+
+text-shadow:0 0 20px cyan;
+
 }
 
-/* Ana Menü */
+/*=========================
+MENÜ
+=========================*/
 
 #menu{
+
 position:fixed;
+
 top:0;
 left:0;
+
 width:100%;
 height:100%;
+
 display:flex;
+
 flex-direction:column;
+
 justify-content:center;
 align-items:center;
-background:linear-gradient(#071322,#0d2d47,#143d5f);
+
+background:linear-gradient(
+180deg,
+#071322,
+#10314d,
+#205b86
+);
+
 }
 
 #gameTitle{
-font-size:70px;
+
+font-size:72px;
+
 margin-bottom:60px;
-color:white;
+
 text-shadow:0 0 20px cyan;
+
 }
 
 #menu button{
+
 width:340px;
-padding:18px;
-margin:12px;
+
+padding:20px;
+
+margin:14px;
+
+border:none;
+
 border-radius:18px;
-font-size:26px;
-font-weight:bold;
+
 background:#2da8ff;
+
 color:white;
-box-shadow:0 0 20px #2da8ff;
+
+font-size:28px;
+
+font-weight:bold;
+
+box-shadow:0 0 18px cyan;
+
+transition:.25s;
+
 }
 
-#menu button:hover{
-background:#56b8ff;
-transform:scale(1.05);
+#menu button:active{
+
+transform:scale(.96);
+
 }
 
-/* Oyun Alanı */
+/*=========================
+OYUN
+=========================*/
 
 #game{
+
 position:fixed;
+
 top:0;
 left:0;
+
 width:100%;
 height:100%;
+
 overflow:hidden;
-background:linear-gradient(#5bc0ff,#8ddcff,#ffffff);
+
+background:linear-gradient(
+
+#68c8ff,
+#9ee2ff,
+#ffffff
+
+);
+
 }
 
 #gameCanvas{
@@ -111,117 +212,82 @@ position:absolute;
 top:0;
 left:0;
 
-width:100vw;
-height:100vh;
+width:100%;
+height:100%;
 
 display:block;
 
 }
 
-/* HUD */
+/*=========================
+HUD
+=========================*/
 
 #hud{
+
 position:absolute;
-top:15px;
-left:15px;
-right:15px;
+
+top:20px;
+left:20px;
+right:20px;
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
-font-size:26px;
-font-weight:bold;
+
 pointer-events:none;
-text-shadow:0 0 8px black;
+
+font-size:24px;
+
+font-weight:bold;
+
+}
+
+#hud div{
+
+padding:10px 18px;
+
+background:rgba(0,0,0,.35);
+
+backdrop-filter:blur(8px);
+
+border-radius:16px;
+
+box-shadow:0 0 15px rgba(0,255,255,.3);
+
 }
 
 #lifeBar{
-font-size:34px;
+
+font-size:32px;
+
 }
 
-#score,
-#distance,
-#notes,
-#records{
-padding:10px 16px;
-background:rgba(0,0,0,.35);
-border-radius:14px;
-backdrop-filter:blur(6px);
+/*=========================
+BUTON
+=========================*/
+
+button{
+
+cursor:pointer;
+
+user-select:none;
+
+outline:none;
+
+border:none;
+
 }
 
-/* Bildirim */
+button:hover{
 
-#notification{
-position:fixed;
-top:120px;
-left:50%;
-transform:translateX(-50%);
-padding:20px 40px;
-background:#2da8ff;
-border-radius:18px;
-font-size:42px;
-font-weight:bold;
-box-shadow:0 0 25px cyan;
-z-index:300;
-animation:pop .5s;
-}
+filter:brightness(1.08);
 
-/* Fever */
-
-#feverScreen{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:80px;
-font-weight:bold;
-background:rgba(0,150,255,.18);
-color:#8fd8ff;
-text-shadow:0 0 30px cyan;
-pointer-events:none;
-}
-
-/* Legendary */
-
-#legendaryScreen{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-font-size:75px;
-font-weight:bold;
-background:rgba(255,255,255,.12);
-color:#fff;
-text-shadow:0 0 30px gold;
-pointer-events:none;
-}
-
-/* Boss */
-
-#bossWarning{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-background:rgba(255,0,0,.45);
-font-size:65px;
-font-weight:bold;
-animation:flash .4s infinite;
-z-index:400;
-  }/* Başarımlar */
+}/*=========================
+MENÜLER
+=========================*/
 
 #achievementMenu,
 #highScoreMenu,
@@ -230,12 +296,17 @@ z-index:400;
 #gameOver{
 
 position:fixed;
+
 top:0;
 left:0;
+
 width:100%;
 height:100%;
+
 display:flex;
+
 flex-direction:column;
+
 justify-content:center;
 align-items:center;
 
@@ -251,9 +322,12 @@ z-index:500;
 #pauseMenu h1,
 #gameOver h1{
 
-font-size:58px;
-margin-bottom:30px;
+font-size:56px;
+
+margin-bottom:25px;
+
 color:#56b8ff;
+
 text-shadow:0 0 20px cyan;
 
 }
@@ -261,25 +335,26 @@ text-shadow:0 0 20px cyan;
 #achievementList{
 
 width:80%;
+
 max-width:700px;
 
-background:rgba(255,255,255,.08);
-
-padding:25px;
-
-border-radius:18px;
+max-height:420px;
 
 overflow:auto;
 
-max-height:420px;
+padding:20px;
+
+background:rgba(255,255,255,.08);
+
+border-radius:18px;
 
 }
 
 #achievementList p{
 
-font-size:28px;
+padding:14px;
 
-padding:12px;
+font-size:26px;
 
 border-bottom:1px solid rgba(255,255,255,.12);
 
@@ -287,7 +362,7 @@ border-bottom:1px solid rgba(255,255,255,.12);
 
 #helpMenu p{
 
-font-size:28px;
+font-size:26px;
 
 margin:10px;
 
@@ -297,11 +372,11 @@ margin:10px;
 
 font-size:90px;
 
-margin:30px;
-
 color:gold;
 
 text-shadow:0 0 20px gold;
+
+margin:25px;
 
 }
 
@@ -309,7 +384,7 @@ text-shadow:0 0 20px gold;
 
 font-size:90px;
 
-margin:25px;
+margin:20px;
 
 color:#56b8ff;
 
@@ -321,7 +396,7 @@ text-shadow:0 0 20px cyan;
 
 font-size:34px;
 
-margin-bottom:35px;
+margin-bottom:30px;
 
 }
 
@@ -341,31 +416,82 @@ font-size:26px;
 
 font-weight:bold;
 
-border-radius:18px;
-
 background:#2da8ff;
 
 color:white;
+
+border-radius:18px;
 
 box-shadow:0 0 18px cyan;
 
 }
 
-.backButton:hover,
-#restartBtn:hover,
-#menuBtn:hover,
-#continueBtn:hover,
-#pauseMenuBtn:hover{
+/*=========================
+BİLDİRİM
+=========================*/
 
-transform:scale(1.05);
+#notification{
 
-background:#56b8ff;
+position:fixed;
+
+top:100px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+padding:20px 45px;
+
+background:#2da8ff;
+
+border-radius:18px;
+
+font-size:42px;
+
+font-weight:bold;
+
+box-shadow:0 0 25px cyan;
+
+z-index:1000;
 
 }
 
-/* Loading */
+/*=========================
+BOSS
+=========================*/
 
-#loading{
+#bossWarning{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+align-items:center;
+
+background:rgba(255,0,0,.35);
+
+font-size:60px;
+
+font-weight:bold;
+
+animation:flash .4s infinite;
+
+}
+
+/*=========================
+FEVER
+=========================*/
+
+#feverScreen{
 
 position:fixed;
 
@@ -378,46 +504,70 @@ height:100%;
 display:flex;
 
 justify-content:center;
-
 align-items:center;
 
-background:black;
+font-size:70px;
 
-font-size:40px;
+font-weight:bold;
 
-z-index:2000;
+background:rgba(0,180,255,.15);
 
-}
+color:#7ddcff;
 
-/* Scroll */
+text-shadow:0 0 25px cyan;
 
-::-webkit-scrollbar{
-
-width:10px;
+pointer-events:none;
 
 }
 
-::-webkit-scrollbar-thumb{
+/*=========================
+LEGENDARY
+=========================*/
 
-background:#56b8ff;
+#legendaryScreen{
 
-border-radius:20px;
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+align-items:center;
+
+font-size:70px;
+
+font-weight:bold;
+
+background:rgba(255,255,255,.10);
+
+text-shadow:0 0 25px gold;
+
+pointer-events:none;
 
 }
 
-/* Telefon */
+/*=========================
+MOBİL
+=========================*/
 
 @media(max-width:768px){
 
 #gameTitle{
 
-font-size:44px;
+font-size:42px;
 
 }
 
 #menu button{
 
-width:85%;
+width:90%;
 
 font-size:22px;
 
@@ -425,52 +575,48 @@ font-size:22px;
 
 #hud{
 
-font-size:18px;
+font-size:17px;
 
 }
 
 #lifeBar{
 
-font-size:28px;
+font-size:24px;
 
 }
 
 #achievementMenu h2,
-#helpMenu h2,
 #highScoreMenu h2,
+#helpMenu h2,
+#pauseMenu h1,
 #gameOver h1{
 
-font-size:38px;
+font-size:36px;
 
 }
 
 #achievementList p{
 
-font-size:21px;
+font-size:20px;
 
 }
 
 #notification{
 
-font-size:26px;
+font-size:24px;
 
-padding:15px 20px;
+padding:15px 25px;
 
 }
 
 #bossWarning{
 
-font-size:40px;
+font-size:36px;
 
 }
 
+#feverScreen,
 #legendaryScreen{
-
-font-size:42px;
-
-}
-
-#feverScreen{
 
 font-size:42px;
 
@@ -479,125 +625,70 @@ font-size:42px;
 #bestScore,
 #finalScore{
 
-font-size:58px;
+font-size:60px;
 
 }
 
-}/* ========================= */
-/* ANİMASYONLAR */
-/* ========================= */
-
-@keyframes introFade{
-
-0%{
-opacity:0;
-transform:scale(.7);
 }
 
-20%{
-opacity:1;
-transform:scale(1);
-}
-
-80%{
-opacity:1;
-transform:scale(1);
-}
-
-100%{
-opacity:0;
-visibility:hidden;
-transform:scale(1.15);
-}
-
-}
+/*=========================
+ANİMASYONLAR
+=========================*/
 
 @keyframes pulse{
 
-0%{
-transform:scale(1);
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
+
 }
 
-50%{
-transform:scale(1.08);
-}
+@keyframes introFade{
+
+0%{opacity:0;}
+
+20%{opacity:1;}
+
+80%{opacity:1;}
 
 100%{
-transform:scale(1);
-}
 
-}
-
-@keyframes pop{
-
-0%{
 opacity:0;
-transform:translateX(-50%) scale(.5);
-}
 
-100%{
-opacity:1;
-transform:translateX(-50%) scale(1);
+visibility:hidden;
+
 }
 
 }
 
 @keyframes flash{
 
+0%{opacity:1;}
+
+50%{opacity:.35;}
+
+100%{opacity:1;}
+
+}
+
+@keyframes glow{
+
 0%{
-opacity:1;
+
+box-shadow:0 0 10px cyan;
+
 }
 
 50%{
-opacity:.45;
+
+box-shadow:0 0 35px cyan;
+
 }
 
 100%{
-opacity:1;
-}
 
-}
+box-shadow:0 0 10px cyan;
 
-@keyframes float{
-
-0%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-12px);
-}
-
-100%{
-transform:translateY(0);
-}
-
-}
-
-@keyframes shake{
-
-0%{
-transform:translate(0);
-}
-
-20%{
-transform:translate(-6px,3px);
-}
-
-40%{
-transform:translate(6px,-3px);
-}
-
-60%{
-transform:translate(-5px,2px);
-}
-
-80%{
-transform:translate(5px,-2px);
-}
-
-100%{
-transform:translate(0);
 }
 
 }
@@ -605,157 +696,47 @@ transform:translate(0);
 @keyframes rainbow{
 
 0%{
+
 filter:hue-rotate(0deg);
+
 }
 
 100%{
+
 filter:hue-rotate(360deg);
-}
 
-}
-
-@keyframes glow{
-
-0%{
-box-shadow:0 0 10px cyan;
-}
-
-50%{
-box-shadow:0 0 40px cyan;
-}
-
-100%{
-box-shadow:0 0 10px cyan;
 }
 
 }
 
-@keyframes bounce{
+@keyframes shake{
 
-0%{
-transform:translateY(0);
-}
-
-25%{
-transform:translateY(-8px);
-}
-
-50%{
-transform:translateY(0);
-}
-
-75%{
-transform:translateY(-4px);
-}
-
-100%{
-transform:translateY(0);
-}
+0%{transform:translate(0);}
+25%{transform:translate(-5px,3px);}
+50%{transform:translate(5px,-3px);}
+75%{transform:translate(-5px,2px);}
+100%{transform:translate(0);}
 
 }
 
-@keyframes fadeIn{
-
-from{
-opacity:0;
-}
-
-to{
-opacity:1;
-}
-
-}
-
-@keyframes fadeOut{
-
-from{
-opacity:1;
-}
-
-to{
-opacity:0;
-}
-
-}
-
-/* ========================= */
-/* ÖZEL EFEKTLER */
-/* ========================= */
+/*=========================
+EFEKTLER
+=========================*/
 
 .fever{
+
 animation:glow .8s infinite;
+
 }
 
 .legendary{
+
 animation:rainbow 1s linear infinite;
+
 }
 
 .hit{
+
 animation:shake .25s;
-}
-
-.bounce{
-animation:bounce .5s;
-}
-
-.float{
-animation:float 2s ease-in-out infinite;
-}
-
-.fadeIn{
-animation:fadeIn .4s forwards;
-}
-
-.fadeOut{
-animation:fadeOut .4s forwards;
-}
-
-/* ========================= */
-/* CANVAS */
-/* ========================= */
-
-canvas{
-image-rendering:auto;
-touch-action:none;
-}
-
-/* ========================= */
-/* BUTONLAR */
-/* ========================= */
-
-button{
-user-select:none;
-}
-
-button:hover{
-filter:brightness(1.08);
-}
-
-button:disabled{
-opacity:.5;
-cursor:not-allowed;
-}
-
-/* ========================= */
-/* HUD PARLAMA */
-/* ========================= */
-
-#hud div{
-
-animation:glow 3s infinite;
 
 }
-
-/* ========================= */
-/* GAME OVER */
-/* ========================= */
-
-#gameOver{
-
-backdrop-filter:blur(8px);
-
-}
-
-/* ========================= */
-/* SON */
-/* ========================= */
