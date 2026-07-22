@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Koş Beton Koş</title>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>🏃 Koş Beton Koş</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -12,100 +14,103 @@
 
 <body>
 
-<!-- Açılış -->
+<!-- ========================= -->
+<!-- LOADING -->
+<!-- ========================= -->
 
 <div id="loading">
-<p>Yükleniyor...</p>
+
+    <h1>Yükleniyor...</h1>
+
 </div>
 
+<!-- ========================= -->
+<!-- INTRO -->
+<!-- ========================= -->
 
 <div id="intro">
-<h1 id="introTitle">
-Beton Archive Sunar
-</h1>
+
+    <h1 id="introTitle">
+
+        Beton Archive Sunar
+
+    </h1>
+
 </div>
 
-<!-- Ana Menü -->
+<!-- ========================= -->
+<!-- ANA MENÜ -->
+<!-- ========================= -->
 
 <div id="menu" class="hidden">
 
-<h1 id="gameTitle">
+    <h1 id="gameTitle">
 
-🏃 Koş Beton Koş
+        🏃 KOŞ BETON KOŞ
 
-</h1>
+    </h1>
 
-<button id="playBtn">
+    <button id="playBtn">
 
-▶️ Oyuna Başla
+        ▶ Oyuna Başla
 
-</button>
+    </button>
 
-<button id="achievementBtn">
+    <button id="achievementBtn">
 
-🏆 Başarımlar
+        🏆 Başarımlar
 
-</button>
+    </button>
 
-<button id="scoreBtn">
+    <button id="scoreBtn">
 
-🥇 En Yüksek Skor
+        🥇 En Yüksek Skor
 
-</button>
+    </button>
 
-<button id="helpBtn">
+    <button id="helpBtn">
 
-ℹ️ Nasıl Oynanır
+        ℹ Nasıl Oynanır
 
-</button>
+    </button>
 
 </div>
 
-<!-- Başarımlar -->
+<!-- ========================= -->
+<!-- BAŞARIMLAR -->
+<!-- ========================= -->
 
 <div id="achievementMenu" class="hidden">
 
-<h2>
-
-🏆 Başarımlar
-
-</h2>
+<h2>🏆 Başarımlar</h2>
 
 <div id="achievementList">
 
 <p>🥉 İlk Adım</p>
-
 <p>🎵 100 Nota Topla</p>
-
 <p>📀 10 Plak Topla</p>
-
 <p>🏃 5000 Metre Koş</p>
-
 <p>🔥 Fever Ustası</p>
-
-<p>👹 Boss Kaçışını Tamamla</p>
-
-<p>💎 Legendary Crystal Bul</p>
+<p>👹 Boss Kaçışı</p>
+<p>💎 Legendary Crystal</p>
 
 </div>
 
 <button class="backButton">
 
-⬅️ Geri
+⬅ Geri
 
 </button>
 
 </div>
 
-<!-- Rekor -->
+<!-- ========================= -->
+<!-- REKOR -->
+<!-- ========================= -->
 
 <div id="highScoreMenu" class="hidden">
 
-<h2>
-
-🥇 En Yüksek Skor
-
-</h2>
+<h2>🥇 En Yüksek Skor</h2>
 
 <h1 id="bestScore">
 
@@ -115,255 +120,210 @@ Beton Archive Sunar
 
 <button class="backButton">
 
-⬅️ Geri
+⬅ Geri
 
 </button>
 
 </div>
 
-<!-- Nasıl Oynanır -->
+<!-- ========================= -->
+<!-- NASIL OYNANIR -->
+<!-- ========================= -->
 
 <div id="helpMenu" class="hidden">
 
-<h2>
+<h2>ℹ Nasıl Oynanır</h2>
 
-ℹ️ Nasıl Oynanır
+<p>👆 Dokun = Zıpla</p>
 
-</h2>
+<p>👆👆 Çift Dokun = Yüksek Zıpla</p>
 
-<p>
+<p>🎵 Nota = +10 Puan</p>
 
-👆 Dokun = Zıpla
+<p>📀 Plak = +100 Puan</p>
 
-</p>
+<p>🍌 Muz = Süper Hız</p>
 
-<p>
+<p>💙 Kalp = +1 Can</p>
 
-👆👆 Çift Dokun = Yüksek Zıpla
+<p>💎 Legendary Crystal = 3X Puan</p>
 
-</p>
-
-<p>
-
-🎵 = 10 Puan
-
-</p>
-
-<p>
-
-📀 = 100 Puan
-
-</p>
-
-<p>
-
-🍌 = Süper Zıplama
-
-</p>
-
-<p>
-
-💙 = 3 Canın Var
-
-</p>
-
-<p>
-
-5000 Metrede Boss Kaçışı Başlar
-
-</p>
-
-<p>
-
-💎 Çok Nadir Çıkar
-
-</p>
+<p>👹 5000 metrede Boss gelir.</p>
 
 <button class="backButton">
 
-⬅️ Geri
+⬅ Geri
 
 </button>
 
-</div>
-
-<!-- Oyun -->
+</div><!-- ========================= -->
+<!-- OYUN -->
+<!-- ========================= -->
 
 <div id="game" class="hidden">
 
-<canvas id="gameCanvas"></canvas>
+    <canvas id="gameCanvas"></canvas>
 
-<div id="hud">
+    <!-- HUD -->
 
-<div id="lifeBar">
+    <div id="hud">
 
-💙💙💙
+        <div id="lifeBar">
+            💙💙💙
+        </div>
 
-</div>
+        <div id="score">
+            Archive Puanı<br>
+            <span id="scoreValue">0</span>
+        </div>
 
-<div id="score">
+        <div id="distance">
+            <span id="distanceValue">0</span> m
+        </div>
 
-Archive Puanı
+        <div id="notes">
+            🎵 <span id="noteValue">0</span>
+        </div>
 
-0
+        <div id="records">
+            📀 <span id="recordValue">0</span>
+        </div>
 
-</div>
-
-<div id="distance">
-
-0 m
-
-</div>
-
-<div id="notes">
-
-🎵 0
-
-</div>
-
-<div id="records">
-
-📀 0
+    </div>
 
 </div>
 
-</div>
-
-</div>
-
-<!-- Game Over -->
+<!-- ========================= -->
+<!-- GAME OVER -->
+<!-- ========================= -->
 
 <div id="gameOver" class="hidden">
 
-<h1>
+    <h1>💀 GAME OVER</h1>
 
-💀 GAME OVER
+    <h2>Archive Puanı</h2>
 
-</h1>
+    <h1 id="finalScore">0</h1>
 
-<h2>
+    <h3 id="finalDistance">0 Metre</h3>
 
-Archive Puanı
+    <button id="restartBtn">
+        🔄 Tekrar Oyna
+    </button>
 
-</h2>
+    <button id="menuBtn">
+        🏠 Ana Menü
+    </button>
 
-<h1 id="finalScore">
+</div>
 
-0
-
-</h1>
-
-<h3 id="finalDistance">
-
-0 Metre
-
-</h3>
-
-<button id="restartBtn">
-
-🔄 Tekrar Oyna
-
-</button>
-
-<button id="menuBtn">
-
-🏠 Ana Menü
-
-</button>
-
-  </div><!-- Bildirimler -->
+<!-- ========================= -->
+<!-- BİLDİRİM -->
+<!-- ========================= -->
 
 <div id="notification" class="hidden">
 
-<h1 id="notificationText">
+    <h1 id="notificationText">
 
-READY
+        READY
 
-</h1>
+    </h1>
 
 </div>
 
-<!-- Boss Uyarısı -->
+<!-- ========================= -->
+<!-- BOSS -->
+<!-- ========================= -->
 
 <div id="bossWarning" class="hidden">
 
-<h1>
+    <h1>
 
-⚠️ BOSS KAÇIŞI!
+        ⚠️ BOSS KAÇIŞI
 
-</h1>
+    </h1>
 
-<p>
+    <p>
 
-KAÇ!
+        KAÇ!
 
-</p>
+    </p>
 
 </div>
 
-<!-- Fever Mode -->
+<!-- ========================= -->
+<!-- FEVER -->
+<!-- ========================= -->
 
 <div id="feverScreen" class="hidden">
 
-<h1>
+    <h1>
 
-🔥 FEVER MODE
+        🔥 FEVER MODE
 
-</h1>
+    </h1>
 
 </div>
 
-<!-- Rainbow Fever -->
+<!-- ========================= -->
+<!-- LEGENDARY -->
+<!-- ========================= -->
 
 <div id="legendaryScreen" class="hidden">
 
-<h1>
+    <h1>
 
-🌈 LEGENDARY!
+        🌈 LEGENDARY
 
-</h1>
+    </h1>
 
-<p>
+    <p>
 
-3X PUAN
+        3X PUAN
 
-</p>
+    </p>
 
 </div>
 
-<!-- Duraklat -->
+<!-- ========================= -->
+<!-- DURAKLAT -->
+<!-- ========================= -->
 
 <div id="pauseMenu" class="hidden">
 
-<h1>
+    <h1>
 
-⏸️ Duraklatıldı
+        ⏸️ Duraklatıldı
 
-</h1>
+    </h1>
 
-<button id="continueBtn">
+    <button id="continueBtn">
 
-▶️ Devam Et
+        ▶ Devam Et
 
-</button>
+    </button>
 
-<button id="pauseMenuBtn">
+    <button id="pauseMenuBtn">
 
-🏠 Ana Menü
+        🏠 Ana Menü
 
-</button>
+    </button>
 
 </div>
 
-<!-- Arka Plan Müziği -->
+<!-- ========================= -->
+<!-- SES -->
+<!-- ========================= -->
 
 <audio id="bgMusic" loop>
 
-<source src="gittim.m4a" type="audio/mp4">
+    <source src="gittim.m4a" type="audio/mp4">
 
 </audio>
 
-<!-- Karakter Resmi -->
+<!-- ========================= -->
+<!-- KARAKTER -->
+<!-- ========================= -->
 
 <img
 id="playerImage"
@@ -372,7 +332,17 @@ alt="Karakter"
 style="display:none;"
 >
 
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
 
+<script src="player.js"></script>
+<script src="obstacles.js"></script>
+<script src="effects.js"></script>
+<script src="boss.js"></script>
+<script src="save.js"></script>
+<script src="ui.js"></script>
+<script src="engine.js"></script>
 <script src="script.js"></script>
 
 </body>
